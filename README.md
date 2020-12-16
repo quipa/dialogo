@@ -1,10 +1,10 @@
 # Dialogo
 Uma linguagem para diálogo entre humanos e computadores.
 
-## Objetivo da linguagem
+## Objetivo
 Permitir qualquer pessoa criar sistemas e bancos de informação e conhecimento interativos.
 
-## Requisitos para a linguagem
+## Requisitos
 
 * DEVE ser fácil de ler, compreender e ser usada por qualquer pessoa.
 * DEVE ser fácil de aprender e ensinar num curto espaço de tempo.
@@ -22,5 +22,67 @@ A linguagem está sendo concebida por Maxim Simões de Abreu Jaffe no âmbito do
 ## Inspiração
 A linguagem é filosoficamente inspirada pela linguagem [Logo](https://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](https://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [SmallTalk](https://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](https://pt.wikipedia.org/wiki/Alan_Kay) . Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de "construções", frases com espaços que podem ser completadas.
 
+Outras linguagens de programação que influenciam a proposta:
+* Lisp/Scheme
+* Prolog
+* Inform 7
+* Rebol
+* HyperTalk
+* Dylan
+* Tcl
+* CGOL
+
+## Sintáxe e Semántica
+
+A sintáxe será predominantemente dinâmica, podendo ser redefinada em tempo real. A linguagem terá a seguinte sintaxe pré-definida (EBNF):
+
+```
+(* frases *)
+frase           = declaração | interrogação | definição;
+declaração      = oração , ".";
+interrogação    = oração , "?";
+definição       = oração , ":" , { frase } , "!";
+
+(* oração e construção *)
+oração          = construção , { ";" , construção };
+construção      = { termo } | ( construção , "," , construção ) ;
+termo           = item | grupo ;
+grupo           = expressão | bloco | padrão | texto | texto extenso
+
+
+(* grupos *)
+expressão       = "\[" { oração | frase } "\]" ;
+bloco           = "{" { oração | frase } "}" ;
+padrão          = "(" { oração | frase } ")" ;
+texto           = texto literal | texto curto | texto extenso ;
+texto curto     = "'" { oração | frase } "'" ;
+texto extenso   = '"' { oração | frase } '"' ;
+texto literal   = "''" { oração | frase } "''" ;
+
+(* item *)
+item          = palavra | número | símbolo | literal ;
+palavra       = { ? carateres latinos ? } ;
+número        = ? inteiro, real ? ;
+símbolo       = ? caratere ? - palavra - número - pontuação ;
+literal       = "\" , termo ;
+pontuação     = "," | ";" | "." | "?" | ":" | "!" | "{" | "}" | "\[" | "\]" | "(" | ")" | "'" | '"' | "\" ;
+```
+
+A pontuação define como é "lido" (avaliado) o código.
+
+
 ## Implementação
-Serão publicados protótipos de interpretadores da linguagem. O primeiro protótipo será implementado na linguagem [Tcl](https://pt.wikipedia.org/wiki/Tcl) por ser uma linguagem extremamente flexível, com possíveis protótipos para comparação implementados em [Racket](https://pt.wikipedia.org/wiki/Racket) e [Python](https://pt.wikipedia.org/wiki/Python) e LibreOffice Basic.
+Serão publicados protótipos de interpretadores da linguagem para testagem. O primeiro protótipo será implementado na linguagem [Tcl](https://pt.wikipedia.org/wiki/Tcl) por ser uma linguagem extremamente flexível. Outras possíveis implementações de teste serão criadas em [Racket](https://pt.wikipedia.org/wiki/Racket) e e [Python](https://pt.wikipedia.org/wiki/Python). 
+
+
+Os interpretadores serão baseados no algoritmo Top Down Operator Precedence desenvolvido por Vaughan Pratt, usados na antiga linguagem [CGOL](https://en.wikipedia.org/wiki/CGOL) desenvolvida nos anos 70.
+
+A linguagem suportará os seguintes paradigmas:
+* Orientado à objetos
+* Funcional
+* Lógico
+
+Em termos de paradigma de orientação à objetos, a linguagem suportará herança múltipla e despacho múltiplo, facilitando a criação de redes semânticas entre diferentes sujeitos, verbos e objetos.
+Em termos do paradigma lógico, a linguagem será baseado numa base de factos e procedimentos (comandos, pedidos e perguntas).
+
+
