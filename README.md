@@ -27,7 +27,7 @@ Exemplos (assumindo algumas regras pré-definiadas):
 * Declarar um facto: `A Maria é uma agricultora.`
 * Definir uma regra: `{Uma pessoa} é um agricultor: A pessoa planta (algo)!`
 * Perguntar sobre um facto ou regra. `O José é um apicultor?`
-* Declarar factos em simuláneo: `(A Maria e o José) são quilombolas.`
+* Declarar factos em simultáneo: `(A Maria e o José) são quilombolas.`
 * Definir várias regras: `(Um agricultor ou uma agricultora) é criador de ovelha: O agricultor cria ovelha; a agricultora cria ovelha!`
 * Perguntar sobre vários factos: `(A Ana e o Pedro) são criadores de cabra?` faz uma pergunta sobre a Ana e o Pedro.
 Perguntar sobre um facto (com um expressão de aritmética): `O Pedro produziu [10 quilos * 2 hectares] de milho? `
@@ -46,7 +46,7 @@ O Lucas repete 50 vezes {
   Ele planta uma semente.
   Ele cobre o berço.
   Ele rega o berço.
-  Ele avança 1 metros para sudeste.
+  Ele avança 1 metro para sudeste.
 }
 ```
 
