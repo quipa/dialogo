@@ -66,7 +66,6 @@ construção      = { termo } | ( construção , "," , construção ) ;
 termo           = item | grupo ;
 grupo           = expressão | bloco | padrão | texto | texto extenso ;
 
-
 (* grupos *)
 expressão       = "[" , oração | { frase } , "]" ;
 bloco           = "{" , oração | { frase } , "}" ;
@@ -84,10 +83,11 @@ símbolo       = ? caratere ? - palavra - número - pontuação ;
 literal       = "\" , termo ;
 
 (* pontuação *)
-pontuação     = finalizador | separador | delimitador | "\" ;
+pontuação     = finalizador | separador | delimitador | escape ;
 finalizar     =  "." | "?" | "!" ;
 separador     = "," | ";" | "::" | ":" ;
 delimitador   = "{" | "}" | "[" | "]" | "(" | ")" | "'" | '"' | ;
+escape        = "\"
 ```
 
 ## Inspiração
