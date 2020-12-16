@@ -51,7 +51,7 @@ grupo           = expressão | bloco | padrão | texto | texto extenso
 
 
 (* grupos *)
-expressão       = "\[" { oração | frase } "\]" ;
+expressão       = "[" { oração | frase } "]" ;
 bloco           = "{" { oração | frase } "}" ;
 padrão          = "(" { oração | frase } ")" ;
 texto           = texto literal | texto curto | texto extenso ;
@@ -65,7 +65,7 @@ palavra       = { ? carateres latinos ? } ;
 número        = ? inteiro, real ? ;
 símbolo       = ? caratere ? - palavra - número - pontuação ;
 literal       = "\" , termo ;
-pontuação     = "," | ";" | "." | "?" | ":" | "!" | "{" | "}" | "\[" | "\]" | "(" | ")" | "'" | '"' | "\" ;
+pontuação     = "," | ";" | "." | "?" | ":" | "!" | "{" | "}" | "[" | "]" | "(" | ")" | "'" | '"' | "\" ;
 ```
 
 A pontuação define como é "lido" (avaliado) o código.
