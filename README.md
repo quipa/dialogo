@@ -8,7 +8,7 @@ Permitir qualquer pessoa criar sistemas e bancos de informação e conhecimento 
 
 * DEVE ser fácil de ler, compreender e ser usada por qualquer pessoa.
 * DEVE ser fácil de aprender e ensinar num curto espaço de tempo.
-* DEVE ser baseada em Português e ter uma sintáxe e semântica semelhante à linguagem natural, mas DEVE ser formalmente definida e não-ambigúa.
+* DEVE ser baseada em Português e ter uma sintáxe e semântica semelhante à linguagem natural, mas DEVE ser formalmente definida e não-ambígua.
 * DEVE permitir conceber e criar sistemas de informação e conhecimento e permitir criar, ler, atualizar e apagar informações.
 * DEVE ser fácil de instalar e configurar e NÃO DEVE depender de conexão de Internet para tal, mas PODE utilizá-la se houver uma conexão.
 * PODE facilitar a a integração de sistemas de informação e conhecimento existentes (através de API, abindings e protocolos)
