@@ -17,10 +17,10 @@ Permitir qualquer pessoa criar sistemas e bancos de informação e conhecimento 
 ## Histórico
 Esta linguagem foi inspirada por experiências de ensino/aprendizado do [Projeto Quipá](https://www.facebook.com/projetoquipa/) durante a sua campanha "Ação no Sertão" de 2019 no Território Serra da Capivara, Piauí, Brasil. Durante esta campanha foram organizados cursos em colaboração com a [Cáritas Diocesana de São Raimundo Nonat](https://www.facebook.com/CaritasSRN/) junto com comunidades rurais, técnicos e profissionais de extensão e estudantes de ensino técnico da Escola Família Agrícola da Serra da Capivara.
 
-A linguagem está sendo concebida por Maxim Simões de Abreu Jaffe no âmbito do mestrado em Gestão dos Recursos Naturais da Universidade de Trás-os-Montes e Alto Douro, Portugal. Será utilizada futuramente para extensão rural e agroecológica em comunidades rurais e urbanas no Território Serra da Capivara, Piauí, Brasil.
+A linguagem está sendo concebida por Maxim Simões de Abreu Jaffe no âmbito do mestrado em Gestão dos Recursos Naturais da [Universidade de Trás-os-Montes e Alto Douro, Portugal](https://www.utad.pt/). Será utilizada futuramente para extensão rural e agroecológica em comunidades rurais e urbanas no Território Serra da Capivara, Piauí, Brasil.
 
 ## Inspiração
-A linguagem é filosoficamente inspirada pela linguagem Logo (DiaLogo) concebida por Seymour Papert e a linguagem SmallTalk concebida por Alan Kay (literalmente conversa fiada). Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de "construções", frases com espaços que podem ser completadas.
+A linguagem é filosoficamente inspirada pela linguagem [Logo](https://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](https://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [SmallTalk](https://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](https://pt.wikipedia.org/wiki/Alan_Kay) . Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de "construções", frases com espaços que podem ser completadas.
 
 ## Implementação
 Serão publicados protótipos de interpretadores da linguagem. O primeiro protótipo será implementado na linguagem Tcl por ser uma linguagem extremamente flexível, com possíveis protótipos para comparação implementados em Racket e Python e LibreOffice Basic.
