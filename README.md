@@ -37,7 +37,7 @@ Se {o Pedro tiver certificado orgânico} então {
   O Pedro planta 2 hectares de algodão consorciado e 2 hectares de consórcio de milho.}
 senão {
   O Pedro planta 4 hectares de consórcio de milho.
-}
+}.
 ```
 Declarar um facto repetidamente:
 ```
@@ -47,7 +47,7 @@ O Lucas repete 50 vezes {
   Ele cobre o berço.
   Ele rega o berço.
   Ele avança 1 metro para sudeste.
-}
+}.
 ```
 
 A linguagem terá a seguinte sintaxe fixa para a pontuação (EBNF):
