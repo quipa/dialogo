@@ -24,21 +24,14 @@ A linguagem está sendo concebida por Maxim Simões de Abreu Jaffe no âmbito do
 A sintáxe será predominantemente dinâmica, podendo ser redefinada em tempo real. A pontuação da linguagem tem regras fixas, alterando como a linguagem é lida (avaliada). As frases são declarações, interrogações (perguntas), definições.
 
 Exemplos (assumindo algumas regras pré-definiadas):
-Declarar um facto:
-`A Maria é uma agricultora.`
-Definir uma regra:
-`{Uma pessoa} é um agricultor: A pessoa planta (algo)!`
-Perguntar sobre um facto ou regra.
-`O José é um apicultor?`
-Declarar factos em simuláneo.
-`(A Maria e o José) são quilombolas.`
-Definir várias regras.
-`(Um agricultor ou uma agricultora) é criador de ovelha: O agricultor cria ovelha; a agricultora cria ovelha!`
-Perguntar sobre vários factos.
-`(A Ana e o Pedro) são criadores de cabra?` faz uma pergunta sobre a Ana e o Pedro.
-Perguntar sobre um facto (com um expressão de aritmética).
-`O Pedro produziu [10 quilos * 2 hectares] de milho? `
-Declarar um facto de acordo com uma condição.
+* Declarar um facto: `A Maria é uma agricultora.`
+* Definir uma regra: `{Uma pessoa} é um agricultor: A pessoa planta (algo)!`
+* Perguntar sobre um facto ou regra. `O José é um apicultor?`
+* Declarar factos em simuláneo: `(A Maria e o José) são quilombolas.`
+* Definir várias regras: `(Um agricultor ou uma agricultora) é criador de ovelha: O agricultor cria ovelha; a agricultora cria ovelha!`
+* Perguntar sobre vários factos: `(A Ana e o Pedro) são criadores de cabra?` faz uma pergunta sobre a Ana e o Pedro.
+Perguntar sobre um facto (com um expressão de aritmética): `O Pedro produziu [10 quilos * 2 hectares] de milho? `
+Declarar um facto de acordo com uma condição:
 ```
 Se {o Pedro tiver certificado orgânico} então {
   O Pedro planta 2 hectares de algodão consorciado e 2 hectares de consórcio de milho.}
@@ -46,12 +39,13 @@ senão {
   O Pedro planta 4 hectares de consórcio de milho.
 }
 ```
-Declarar um facto repetidamente.
+Declarar um facto repetidamente:
 ```
 O Lucas repete 50 vezes {
-  Ele cava berço.
-  Ele planta semente.
-  Ele cobre berço. Ele rega berço.
+  Ele cava um berço.
+  Ele planta uma semente.
+  Ele cobre o berço.
+  Ele rega o berço.
   Ele avança 1 metros para sudeste.
 }
 ```
