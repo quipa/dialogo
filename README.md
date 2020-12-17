@@ -71,9 +71,11 @@ O Lucas repete 50 vezes {
 }.
 `
 
-A linguagem terá a seguinte sintaxe fixa para a pontuação (EBNF):
+A linguagem terá a seguinte sintaxe fixa para a pontuação (gramática EBNF):
 
 ```EBNF
+(* Realce de sintaxe do Github não reconhece carateres latinos por isso nao sao usados acentos ou cedilhas nesta gramática
+
 (* frases *)
 frase           = declaracao | interrogacao | definicao ;
 declaracao      = oracao , "." ;
