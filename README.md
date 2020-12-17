@@ -25,43 +25,43 @@ A sintáxe será predominantemente dinâmica, podendo ser redefinada em tempo re
 
 Exemplos (assumindo algumas regras pré-definiadas):
 * Declarar um facto:
-`
+```
 A Maria é uma agricultora.
-`
+```
 * Definir uma regra:
-`
+```
 {Uma pessoa} é um agricultor: A pessoa planta (algo)!
-`
+```
 * Perguntar sobre um facto ou regra.
-`
+```
 O José é um apicultor?
-`
+```
 * Declarar factos em simultáneo:
-`
+```
 (A Maria e o José) são quilombolas.
-`
+```
 * Definir várias regras:
-`
+```
 (Um agricultor ou uma agricultora) é criador de ovelha: O agricultor cria ovelha; a agricultora cria ovelha!
-`
+```
 * Perguntar sobre vários factos:
-`
+```
 (A Ana e o Pedro) são criadores de cabra?` faz uma pergunta sobre a Ana e o Pedro.
-`
+```
 * Perguntar sobre um facto (com um expressão de aritmética)
-`
+```
 O Pedro produziu [10 quilos * 2 hectares] de milho?
-`
+```
 * Declarar um facto de acordo com uma condição
-`
+```
 Se {o Pedro tiver certificado orgânico} então {
   O Pedro planta 2 hectares de algodão consorciado e 2 hectares de consórcio de milho.}
 senão {
   O Pedro planta 4 hectares de consórcio de milho.
 }.
-`
+```
 * Declarar um facto repetidamente:
-`
+```
 O Lucas repete 50 vezes {
   Ele cava um berço.
   Ele planta uma semente.
@@ -69,7 +69,7 @@ O Lucas repete 50 vezes {
   Ele rega o berço.
   Ele avança 1 metro para sudeste.
 }.
-`
+```
 
 A linguagem terá a seguinte sintaxe fixa para a pontuação (gramática EBNF):
 
