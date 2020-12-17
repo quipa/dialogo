@@ -24,23 +24,44 @@ A linguagem está sendo concebida por Maxim Simões de Abreu Jaffe no âmbito do
 A sintáxe será predominantemente dinâmica, podendo ser redefinada em tempo real. A pontuação da linguagem tem regras fixas, alterando como a linguagem é lida (avaliada). As frases são declarações, interrogações (perguntas), definições.
 
 Exemplos (assumindo algumas regras pré-definiadas):
-* Declarar um facto: `A Maria é uma agricultora.`
-* Definir uma regra: `{Uma pessoa} é um agricultor: A pessoa planta (algo)!`
-* Perguntar sobre um facto ou regra. `O José é um apicultor?`
-* Declarar factos em simultáneo: `(A Maria e o José) são quilombolas.`
-* Definir várias regras: `(Um agricultor ou uma agricultora) é criador de ovelha: O agricultor cria ovelha; a agricultora cria ovelha!`
-* Perguntar sobre vários factos: `(A Ana e o Pedro) são criadores de cabra?` faz uma pergunta sobre a Ana e o Pedro.
-Perguntar sobre um facto (com um expressão de aritmética): `O Pedro produziu [10 quilos * 2 hectares] de milho? `
-Declarar um facto de acordo com uma condição:
-```
+* Declarar um facto:
+`
+A Maria é uma agricultora.
+`
+* Definir uma regra:
+`
+{Uma pessoa} é um agricultor: A pessoa planta (algo)!
+`
+* Perguntar sobre um facto ou regra.
+`
+O José é um apicultor?
+`
+* Declarar factos em simultáneo:
+`
+(A Maria e o José) são quilombolas.
+`
+* Definir várias regras:
+`
+(Um agricultor ou uma agricultora) é criador de ovelha: O agricultor cria ovelha; a agricultora cria ovelha!
+`
+* Perguntar sobre vários factos:
+`
+(A Ana e o Pedro) são criadores de cabra?` faz uma pergunta sobre a Ana e o Pedro.
+`
+* Perguntar sobre um facto (com um expressão de aritmética)
+`
+O Pedro produziu [10 quilos * 2 hectares] de milho?
+`
+* Declarar um facto de acordo com uma condição
+`
 Se {o Pedro tiver certificado orgânico} então {
   O Pedro planta 2 hectares de algodão consorciado e 2 hectares de consórcio de milho.}
 senão {
   O Pedro planta 4 hectares de consórcio de milho.
 }.
-```
-Declarar um facto repetidamente:
-```
+`
+* Declarar um facto repetidamente:
+`
 O Lucas repete 50 vezes {
   Ele cava um berço.
   Ele planta uma semente.
@@ -48,42 +69,42 @@ O Lucas repete 50 vezes {
   Ele rega o berço.
   Ele avança 1 metro para sudeste.
 }.
-```
+`
 
 A linguagem terá a seguinte sintaxe fixa para a pontuação (EBNF):
 
-```
+```EBNF
 (* frases *)
-frase           = declaração | interrogação | definição ;
-declaração      = oração , "." ;
-interrogação    = oração , "?" ;
-definição       = oração , [ precedência ] ":" , { frase } , "!" ;
-precedência     = "::" número [ número ] ;
+frase           = declaracao | interrogacao | definicao ;
+declaracao      = oracao , "." ;
+interrogacao    = oracao , "?" ;
+definicao       = oracao , [ precedencia ] ":" , { frase } , "!" ;
+precedencia     = "::" numero [ numero ] ;
 
-(* oração e construção *)
-oração          = construção , { ";" , construção };
-construção      = { termo } | ( construção , "," , construção ) ;
+(* oracao e construcao *)
+oracao          = construcao , { ";" , construcao };
+construcao      = { termo } | ( construcao , "," , construcao ) ;
 termo           = item | grupo ;
-grupo           = expressão | bloco | padrão | texto | texto extenso ;
+grupo           = expressao | bloco | padrao | texto | texto extenso ;
 
 (* grupos *)
-expressão       = "[" , oração | { frase } , "]" ;
-bloco           = "{" , oração | { frase } , "}" ;
-padrão          = "(" , oração | { frase } , ")" ;
+expressao       = "[" , oracao | { frase } , "]" ;
+bloco           = "{" , oracao | { frase } , "}" ;
+padrao          = "(" , oracao | { frase } , ")" ;
 texto           = texto normal | texto literal ;
-texto normal    = "'" , oração | { frase } , "'" ;
-texto literal   = '"' , oração | { frase } , '"' ;
-comentário      = '"""' , { oração | frase } , '"""'
+texto normal    = "'" , oracao | { frase } , "'" ;
+texto literal   = '"' , oracao | { frase } , '"' ;
+comentário      = '"""' , { oracao | frase } , '"""'
 
 (* item *)
-item          = palavra | número | símbolo | literal
+item          = palavra | numero | simbolo | literal
 palavra       = { ? carateres latinos ? } ;
-número        = ? inteiro, real ? ;
-símbolo       = ? caratere ? - palavra - número - pontuação ;
+numero        = ? inteiro, real ? ;
+simbolo       = ? caratere ? - palavra - numero - pontuacao ;
 literal       = "\" , termo ;
 
-(* pontuação *)
-pontuação     = finalizador | separador | delimitador | escape ;
+(* pontuacao *)
+pontuacao     = finalizador | separador | delimitador | escape ;
 finalizar     =  "." | "?" | "!" ;
 separador     = "," | ";" | "::" | ":" ;
 delimitador   = "{" | "}" | "[" | "]" | "(" | ")" | "'" | '"' | ;
