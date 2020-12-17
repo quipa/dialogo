@@ -84,7 +84,7 @@ definicao       = oracao , [ precedencia ] ":" , { frase } , "!" ;
 precedencia     = "::" numero [ numero ] ;
 
 (* oracao e construcao *)
-oracao          = construcao , { ";" , construcao };
+oracao          = construcao , { ";" , construcao } ;
 construcao      = { termo } | ( construcao , "," , construcao ) ;
 termo           = item | grupo ;
 grupo           = expressao | bloco | padrao | texto | texto extenso ;
@@ -96,10 +96,10 @@ padrao          = "(" , oracao | { frase } , ")" ;
 texto           = texto normal | texto literal ;
 texto normal    = "'" , oracao | { frase } , "'" ;
 texto literal   = '"' , oracao | { frase } , '"' ;
-comentário      = '"""' , { oracao | frase } , '"""'
+comentário      = '"""' , { oracao | frase } , '"""' ;
 
 (* item *)
-item          = palavra | numero | simbolo | literal
+item          = palavra | numero | simbolo | literal ;
 palavra       = { ? carateres latinos ? } ;
 numero        = ? inteiro, real ? ;
 simbolo       = ? caratere ? - palavra - numero - pontuacao ;
@@ -110,7 +110,7 @@ pontuacao     = finalizador | separador | delimitador | escape ;
 finalizar     =  "." | "?" | "!" ;
 separador     = "," | ";" | "::" | ":" ;
 delimitador   = "{" | "}" | "[" | "]" | "(" | ")" | "'" | '"' | ;
-escape        = "\"
+escape        = "\" ;
 ```
 
 ## Inspiração
