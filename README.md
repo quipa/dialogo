@@ -46,7 +46,7 @@ O José é um apicultor?
 ```
 * Perguntar sobre vários factos:
 ```
-(A Ana e o Pedro) são criadores de cabra?` faz uma pergunta sobre a Ana e o Pedro.
+(A Ana e o Pedro) são criadores de cabra?
 ```
 * Perguntar sobre um facto (com um expressão de aritmética)
 ```
@@ -70,6 +70,15 @@ O Lucas repete 50 vezes {
   Ele avança 1 metro para sudeste.
 }.
 ```
+
+A linguagem suportará os seguintes paradigmas:
+* Orientado à objetos
+* Funcional
+* Lógico
+
+Em termos de paradigma de orientação à objetos, a linguagem suportará herança múltipla e despacho múltiplo, facilitando a criação de redes semânticas entre diferentes sujeitos, verbos e objetos.
+Em termos do paradigma lógico, a linguagem será baseado numa base de factos e procedimentos (comandos, pedidos e perguntas).
+Em termos funcionais, definições sem palavras chave poderão ser considerada expressões lambda.
 
 A linguagem terá a seguinte sintaxe fixa para a pontuação (gramática EBNF):
 
@@ -114,31 +123,28 @@ escape        = "\" ;
 ```
 
 ## Inspiração
-A linguagem é filosoficamente inspirada pela linguagem [Logo](https://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](https://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [SmallTalk](https://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](https://pt.wikipedia.org/wiki/Alan_Kay) . Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de "construções", frases com espaços que podem ser completadas.
+A linguagem é filosoficamente inspirada pela linguagem [Logo](https://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](https://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [Smalltalk](https://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](https://pt.wikipedia.org/wiki/Alan_Kay). Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de *[construções](https://en.wikipedia.org/wiki/Construction_grammar)*, frases com espaços que podem ser completadas.
 
-Outras linguagens de programação que influenciam a proposta:
-* Lisp/Scheme
-* Prolog
-* Inform 7
-* Rebol
-* HyperTalk
-* Dylan
-* Tcl
-* CGOL
+Linguagens de programação que influenciam a proposta:
+* Logo
 * Smalltalk
+* [Lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language)/[Scheme](https://en.wikipedia.org/wiki/Scheme_(programming_language)
+* [Prolog](https://en.wikipedia.org/wiki/Prolog)
+* [Inform 7](http://inform7.com/)
+* [Attempto Controlled English](http://attempto.ifi.uzh.ch/site/)
+* [Rebol](http://www.rebol.com/)
+* [HyperTalk](https://en.wikipedia.org/wiki/HyperTalk)
+* [Dylan](https://en.wikipedia.org/wiki/Dylan_(programming_language)
+* [Tcl](https://www.tcl.tk/)
+* [CGOL](https://en.wikipedia.org/wiki/CGOL)
 
 ## Implementação
-Serão publicados protótipos de interpretadores da linguagem para testagem. O primeiro protótipo será implementado na linguagem [Tcl](https://pt.wikipedia.org/wiki/Tcl) por ser uma linguagem extremamente flexível. Outras possíveis implementações de teste serão criadas em [Racket](https://pt.wikipedia.org/wiki/Racket) e e [Python](https://pt.wikipedia.org/wiki/Python). 
+Atualmente o projeto está a considerar desenvolver o primeiro protótipo na linguagem [Groovy](https://groovy-lang.org/), sendo possivelmente complementada com código em Java e outras linguagens JVM ([Kotlin](kotlinlang.org/) e [Scala](scala-lang.org/)). Groovy é uma linguagem dinâmica multi-paradigma com diversas características que são interessantes para o projeto:
+* Metaprogramação dinâmica e estática
+* Tipagem gradual
+* Despacho múltiplo
+* *Closures*
+* Interoperabilidade com Java
 
-
-Os interpretadores serão baseados no algoritmo Top Down Operator Precedence desenvolvido por Vaughan Pratt, usados na antiga linguagem [CGOL](https://en.wikipedia.org/wiki/CGOL) desenvolvida nos anos 70.
-
-A linguagem suportará os seguintes paradigmas:
-* Orientado à objetos
-* Funcional
-* Lógico
-
-Em termos de paradigma de orientação à objetos, a linguagem suportará herança múltipla e despacho múltiplo, facilitando a criação de redes semânticas entre diferentes sujeitos, verbos e objetos.
-Em termos do paradigma lógico, a linguagem será baseado numa base de factos e procedimentos (comandos, pedidos e perguntas).
-Em termos funcionais, definições dentro sem palavras chave pode ser considerada expressões lambda
+O interpretador será baseado no algoritmo *Top Down Operator Precedence* desenvolvido por Vaughan Pratt, usados na antiga linguagem [CGOL](https://en.wikipedia.org/wiki/CGOL) desenvolvida nos anos 70.
 
