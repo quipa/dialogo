@@ -125,6 +125,7 @@ Outras linguagens de programação que influenciam a proposta:
 * Dylan
 * Tcl
 * CGOL
+* Smalltalk
 
 ## Implementação
 Serão publicados protótipos de interpretadores da linguagem para testagem. O primeiro protótipo será implementado na linguagem [Tcl](https://pt.wikipedia.org/wiki/Tcl) por ser uma linguagem extremamente flexível. Outras possíveis implementações de teste serão criadas em [Racket](https://pt.wikipedia.org/wiki/Racket) e e [Python](https://pt.wikipedia.org/wiki/Python). 
