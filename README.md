@@ -128,13 +128,13 @@ A linguagem é filosoficamente inspirada pela linguagem [Logo](https://pt.wikipe
 Linguagens de programação que influenciam a proposta:
 * Logo
 * Smalltalk
-* [Lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language)/[Scheme](https://en.wikipedia.org/wiki/Scheme_(programming_language)
+* [Lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language))/[Scheme](https://en.wikipedia.org/wiki/Scheme_(programming_language))
 * [Prolog](https://en.wikipedia.org/wiki/Prolog)
 * [Inform 7](http://inform7.com/)
 * [Attempto Controlled English](http://attempto.ifi.uzh.ch/site/)
 * [Rebol](http://www.rebol.com/)
 * [HyperTalk](https://en.wikipedia.org/wiki/HyperTalk)
-* [Dylan](https://en.wikipedia.org/wiki/Dylan_(programming_language)
+* [Dylan](https://en.wikipedia.org/wiki/Dylan_(programming_language))
 * [Tcl](https://www.tcl.tk/)
 * [CGOL](https://en.wikipedia.org/wiki/CGOL)
 
