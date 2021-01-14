@@ -6,50 +6,51 @@ package org.quipa.dialogo; }
 
 // frases
 documento       : (frase)+ ;
-frase           : declaração | interrogação | definição ;
-declaração      : período '.' ;
-interrogação    : período '?' ;
-definição       : oração (precedência)? ':' (frase)+ '!' ;
-precedência     : '::' NÚMERO (NÚMERO)? ;
+frase           : declaracao | interrogacao | definicao ;
+declaracao      : periodo '.' ;
+interrogacao    : periodo '?' ;
+definicao       : oracao (precedencia)? ':' (frase)+ '!' ;
+precedencia     : '::' NUMERO (NUMERO)? ;
 
 // período e oração
-período         : oração (';' (oração ',' oração)+)+ ;
-oração          : (ESPAÇO)? termo (ESPAÇO termo)+ ;
+periodo         : oracao (';' (oracao ',' oracao)+)+ ;
+oracao          : (ESPACO)? termo (ESPACO termo)+ ;
 termo           : ITEM | grupo ;
-grupo           : expressão | bloco | padrão | texto | comentário ;
+grupo           : expressao | bloco | padrao | texto | comentario ;
 
 // grupos de código
-expressão       : '[' (oração | (frase)+) ']' ;
-bloco           : '{' (oração | (frase)+) '}' ;
-padrão          : '(' (operadorKleene)? (oração | (frase)+) ')' ;
-operadorKleene  : OPÇÃO_KLEENE | SOMA_KLEENE | ESTRELA_KLEENE ;
+expressao       : '[' (oracao | (frase)+) ']' ;
+bloco           : '{' (oracao | (frase)+) '}' ;
+padrao          : '(' (operadorKleene)? (oracao | (frase)+) ')' ;
+operadorKleene  : OPCAO_KLEENE | SOMA_KLEENE | ESTRELA_KLEENE ;
 
 // texto
 texto           : textoNormal | textoLiteral | textoBruto ;
 textoNormal     : '\'' (~('\'' | '\\') | escapeTexto)* '\'' ;
 textoLiteral    : '"' (~('"' | '\\') | '\\' .)* '"' ;
 textoBruto      : 'b"' .*? '"' ;
-escapeTexto     : '\\' (expressão | bloco | padrão | .) ;
+escapeTexto     : '\\' (expressao | bloco | padrao | .) ;
 
 // comentário
-comentário          : '#' .*? '\n' | comentárioExpressão |
-                    | comentárioBloco | comentárioPadrão ;
-comentárioExpressão : '#[' (comentárioContéudo)? ']'  ;
-comentárioBloco     : '#{' (comentárioContéudo)? '}'  ;
-comentárioPadrão    : '#(' (comentárioContéudo)? ')'  ;
-comentárioContéudo  : comentário | . ;
+comentario          : '#' .*? '\n' | comentarioExpressao |
+                    | comentarioBloco | comentarioPadrao ;
+comentarioExpressao : '#[' (comentarioConteudo)? ']'  ;
+comentarioBloco     : '#{' (comentarioConteudo)? '}'  ;
+comentarioPadrao    : '#(' (comentarioConteudo)? ')'  ;
+comentarioConteudo  : comentario | . ;
 
 // item
-ITEM            : PALAVRA | NÚMERO | SÍMBOLO | LITERAL ;
+ITEM            : PALAVRA | NUMERO | SIMBOLO | LITERAL ;
 PALAVRA         : (LETRA)+ ;
-NÚMERO          : (DIGÍTO)+ (',' (DIGÍTO)+)? ;
-SÍMBOLO         : [^\\[\]{}().?!,;:'"] ;
+NUMERO          : (DIGITO)+ (',' (DIGITO)+)? ;
+SIMBOLO         : [^\\[\]{}().?!,;:'"] ;
 LITERAL         : '\\' [^\\]*? ;
-ESPAÇO          : [\s]+ -> skip ;
+ESPACO          : [\s]+ -> skip ;
 
-OPÇÃO_KLEENE    : '?'
-SOMA_KLEENE     : '+'
-ESTRELA_KLEENE  : '*'
+// operadores kleene
+OPCAO_KLEENE    : '?' ;
+SOMA_KLEENE     : '+' ;
+ESTRELA_KLEENE  : '*' ;
 
 fragment LETRA  : [\p{Letter}] ;
-fragment DIGÍTO : [0-9] ;
+fragment DIGITO : [0-9] ;

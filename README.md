@@ -106,10 +106,6 @@ grupo           = expressao | bloco | padrao | texto | comentario ;
 expressao       = "[" , oracao | { frase } , "]" ;
 bloco           = "{" , oracao | { frase } , "}" ;
 padrao          = "(" , [ operador kleene ] , (oracao | { frase }) , ")" ;
-operador kleene = opcao kleene | soma kleene | estrela kleene ;
-opcao kleene    = "?" ;
-soma kleeene    = "+" ;
-estrela kleene  = "*" ;
 
 (* texto e comentario *)
 texto           = texto normal | texto literal | texto bruto ;
@@ -133,6 +129,12 @@ separador       = "," | ";" | "::" | ":" ;
 delimitador     = "{" | "}" | "[" | "]" | "(" | ")" | "'" | '"' ;
 escape          = "\" ;
 espaco          = { " " } ;
+
+(* operadores kleene *)
+operador kleene = opcao kleene | soma kleene | estrela kleene ;
+opcao kleene    = "?" ;
+soma kleeene    = "+" ;
+estrela kleene  = "*" ;
 ```
 
 Ver uma implementação como gramática [antlr4](app/src/main/antlr/org/quipa/dialogo/Gramatica.g4)
