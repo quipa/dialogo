@@ -23,7 +23,6 @@ expressão       : '[' (oração | (frase)+) ']' ;
 bloco           : '{' (oração | (frase)+) '}' ;
 padrão          : '(' (oração | (frase)+) ')' ;
 
-
 // texto
 texto           : textoNormal | textoLiteral | textoBruto ;
 textoNormal     : '\'' (~('\'' | '\\') | escapeTexto)* '\'' ;
@@ -39,13 +38,13 @@ comentárioBloco     : '#{' (comentárioContéudo)? '}'  ;
 comentárioPadrão    : '#(' (comentárioContéudo)? ')'  ;
 comentárioContéudo  : comentário | . ;
 
-
+// item
 ITEM            : PALAVRA | NÚMERO | SÍMBOLO | LITERAL ;
 PALAVRA         : (LETRA)+ ;
 NÚMERO          : (DIGÍTO)+ (',' (DIGÍTO)+)? ;
 SÍMBOLO         : [^\\[\]{}().?!,;:'"] ;
 LITERAL         : '\\' [^\\]*? ;
-ESPAÇO          : [\s]+ -> skip;
+ESPAÇO          : [\s]+ -> skip ;
 
 fragment LETRA  : [\p{Letter}] ;
 fragment DIGÍTO : [0-9] ;

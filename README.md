@@ -85,7 +85,7 @@ A linguagem terá a seguinte sintaxe fixa para a pontuação (gramática EBNF):
 ```EBNF
 (*
  * Realce de sintaxe do Github não reconhece carateres latinos por isso
- * nao sao usados acentos ou cedilhas nesta gramática
+ * não são usados acentos ou cedilhas nesta gramática
  *)
 
 (* frases *)
@@ -128,7 +128,7 @@ finalizador     =  "." | "?" | "!" ;
 separador       = "," | ";" | "::" | ":" ;
 delimitador     = "{" | "}" | "[" | "]" | "(" | ")" | "'" | '"' ;
 escape          = "\" ;
-espaço          = { " " } ;
+espaco          = { " " } ;
 ```
 
 Ver uma implementação como gramática [antlr4](app/src/main/antlr/org/quipa/dialogo/Gramatica.g4)
