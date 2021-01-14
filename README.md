@@ -96,7 +96,7 @@ precedencia     = "::" numero [ numero ] ;
 oracao          = construcao , { ";" , construcao } ;
 construcao      = { termo } | ( construcao , "," , construcao ) ;
 termo           = item | grupo ;
-grupo           = expressao | bloco | padrao | texto | comentário ;
+grupo           = expressao | bloco | padrao | texto | comentario ;
 
 (* grupos *)
 expressao       = "[" , oracao | { frase } , "]" ;
@@ -105,7 +105,7 @@ padrao          = "(" , oracao | { frase } , ")" ;
 texto           = texto normal | texto literal ;
 texto normal    = "'" , oracao | { frase } , "'" ;
 texto literal   = '"' , oracao | { frase } , '"' ;
-comentário      = '"""' , { oracao | frase } , '"""' ;
+comentario      = '"""' , { oracao | frase } , '"""' ;
 
 (* item *)
 item          = palavra | numero | simbolo | literal ;
@@ -121,6 +121,8 @@ separador     = "," | ";" | "::" | ":" ;
 delimitador   = "{" | "}" | "[" | "]" | "(" | ")" | "'" | '"' | ;
 escape        = "\" ;
 ```
+
+Ver uma implementação como gramática [antlr4](app/src/main/antlr/org/quipa/dialogo/Dialogo.g4)
 
 ## Inspiração
 A linguagem é filosoficamente inspirada pela linguagem [Logo](https://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](https://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [Smalltalk](https://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](https://pt.wikipedia.org/wiki/Alan_Kay). Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de *[construções](https://en.wikipedia.org/wiki/Construction_grammar)*, frases com espaços que podem ser completadas.
