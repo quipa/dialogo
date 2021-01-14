@@ -150,7 +150,7 @@ Linguagens de programação que influenciam a proposta:
 * [CGOL](https://en.wikipedia.org/wiki/CGOL)
 
 ## Implementação
-Atualmente o projeto está a considerar desenvolver o primeiro protótipo na linguagem [Groovy](https://groovy-lang.org/), sendo possivelmente complementada com código em Java e outras linguagens JVM ([Kotlin](kotlinlang.org/) e [Scala](scala-lang.org/)). Groovy é uma linguagem dinâmica multi-paradigma com diversas características que são interessantes para o projeto:
+Atualmente o projeto está a considerar desenvolver o primeiro protótipo na linguagem [Groovy](https://groovy-lang.org/), sendo possivelmente complementada com código em Java e outras linguagens JVM ([Kotlin](https://kotlinlang.org/) e [Scala](https://scala-lang.org/)). Groovy é uma linguagem dinâmica multi-paradigma com diversas características que são interessantes para o projeto:
 * Metaprogramação dinâmica e estática
 * Tipagem gradual
 * Despacho múltiplo
