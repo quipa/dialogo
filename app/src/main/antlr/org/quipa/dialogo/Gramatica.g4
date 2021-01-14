@@ -43,7 +43,11 @@ comentarioConteudo  : comentario | . ;
 ITEM            : PALAVRA | NUMERO | SIMBOLO | LITERAL ;
 PALAVRA         : (LETRA)+ ;
 NUMERO          : (DIGITO)+ (',' (DIGITO)+)? ;
-SIMBOLO         : [^\\[\]{}().?!,;:'"] ;
+SIMBOLO         : ~([\p{Letter}] | [0-9]
+                | '.' | '?' | '!'
+                | ',' | ';' | ':'
+                | '[' | ']' | '{' | '}' | '(' | ')' | '\'' | '"'
+                | '\\' ) ;
 LITERAL         : '\\' [^\\]*? ;
 ESPACO          : [\s]+ -> skip ;
 

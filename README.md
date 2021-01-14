@@ -125,12 +125,12 @@ literal         = "\" , { ? caratere ? - "\" - espaco }  ;
 (* pontuacao *)
 pontuacao       = finalizador | separador | delimitador | escape ;
 finalizador     =  "." | "?" | "!" ;
-separador       = "," | ";" | "::" | ":" ;
-delimitador     = "{" | "}" | "[" | "]" | "(" | ")" | "'" | '"' ;
+separador       = "," | ";" | ":" ;
+delimitador     = "[" | "]" | "{" | "}" | "(" | ")" | "'" | '"' ;
 escape          = "\" ;
 espaco          = { " " } ;
 
-(* operadores kleene *)
+(* operadores kleene)
 operador kleene = opcao kleene | soma kleene | estrela kleene ;
 opcao kleene    = "?" ;
 soma kleeene    = "+" ;
