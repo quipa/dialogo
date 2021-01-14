@@ -96,7 +96,7 @@ precedencia     = "::" numero [ numero ] ;
 oracao          = construcao , { ";" , construcao } ;
 construcao      = { termo } | ( construcao , "," , construcao ) ;
 termo           = item | grupo ;
-grupo           = expressao | bloco | padrao | texto | texto extenso ;
+grupo           = expressao | bloco | padrao | texto | comentário ;
 
 (* grupos *)
 expressao       = "[" , oracao | { frase } , "]" ;
@@ -109,14 +109,14 @@ comentário      = '"""' , { oracao | frase } , '"""' ;
 
 (* item *)
 item          = palavra | numero | simbolo | literal ;
-palavra       = { ? carateres latinos ? } ;
-numero        = ? inteiro, real ? ;
+palavra       = { ? letras latinas ? } ;
+numero        = ? numero inteiro, numero real ? ;
 simbolo       = ? caratere ? - palavra - numero - pontuacao ;
-literal       = "\" , termo ;
+literal       = "\" , item ;
 
 (* pontuacao *)
 pontuacao     = finalizador | separador | delimitador | escape ;
-finalizar     =  "." | "?" | "!" ;
+finalizador     =  "." | "?" | "!" ;
 separador     = "," | ";" | "::" | ":" ;
 delimitador   = "{" | "}" | "[" | "]" | "(" | ")" | "'" | '"' | ;
 escape        = "\" ;

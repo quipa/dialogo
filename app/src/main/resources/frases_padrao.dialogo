@@ -1,0 +1,64 @@
+
+"Frases".
+
+(vários termos) ":" (várias frases) "!" :: 100, 400 !
+(vários termos) (? "::" (até dois números)) ":" (várias frases) "!" :: 100, 400 !
+(vários termos) "."         :: 100 !
+(vários termos) "?"         :: 100 !
+
+"Grupos".
+
+"[" (várias frases) "]"     :: 200, 0 !
+"(" (várias frases) ")"     :: 200, 0 !
+"{" (várias frases) "}"     :: 400, 0 !
+"'" (vários termos) "'"     :: 300
+'"' (vários carateres) '"'  :: 400
+(vários termos) "," (vários termos) ::  50, 50
+(vários termos) ";" (vários termos) ::  75, 75
+"\" (termo)                 :: 500, 0
+
+se (uma condição) :: 2 : !
+se (uma condição) (? então) (um termo) (? senão) (um termo) :: 2 : !
+se (uma condição) repete (? um número) (um bloco) :: 2 : !
+
+repete (? um número) (um bloco) :: 2 : !
+
+enquanto (um condição) repete (um bloco) :: 2 : ! 
+para (? cada) (uma palvra) (? em) (um conjunto) (um bloco): !
+
+escolha (um termo) entre (+ (uma condição) (um bloco)): !
+
+continua (um número inteiro ou 1): "desce 1 ou mais níveis de avaliação"!
+termina (um número inteiro ou 2) :: 1 : "desce 2 ou mais níveis de avaliação"!
+responde (um termo): "volta para o escopo de chamada"!
+
+escreva (um termo): !
+
+(palavra) existe: !
+
+" repete 10 se {i < 10} {}"
+
+"""Artigos""".
+
+um (uma palavra): "comando que cria uma classe feminina"!
+uma (uma palavra): "comando que cria uma classe masculina"!
+
+a (uma palavra): "comando que cria uma entidade feminina com o nome da palavra dada"!
+o (uma plavra): "commando cria uma entidade masculina com o nome da palavra dada"!
+
+vários (uma classe): (* a classe)!
+várias (uma classe): (* a classe)!
+algo (uma classe): (? a classe)!
+algum (um humano): (? o humano)!
+alguma (um humano): (? o humano)!
+
+"""Verbos de ligação""".
+(uma entidade) é (um item): "associa entidade
+(uma entidade) é (uma entidade): "as entidades são sinónimos"!
+(uma entidade) é (uma classe): "A entidade é desta classe" !
+(uma classe) é (uma classe): "a primeira classe é descendente da segunda classe"!
+
+(uma classe) é sinónimo de (uma classe): "a primeira classe é um sinónimo da segunda classe"!
+
+(uma entidade) tem (uma classe)!
+(uma entidade) tem (uma classe)!
