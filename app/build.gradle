@@ -49,3 +49,14 @@ application {
     mainClass = 'org.quipa.dialogo.App'
 }
 
+
+
+generateGrammarSource {
+    // maxHeapSize = "64m"
+    
+    // In future can generate antlr java code in main project directory
+    // outputDirectory = file("${projectDir}/src/main/java/")
+    arguments += ["-visitor"] // , "-long-messages"]
+}
+
+

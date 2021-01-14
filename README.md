@@ -83,46 +83,55 @@ Em termos funcionais, definições sem palavras chave poderão ser considerada e
 A linguagem terá a seguinte sintaxe fixa para a pontuação (gramática EBNF):
 
 ```EBNF
-(* Realce de sintaxe do Github não reconhece carateres latinos por isso nao sao usados acentos ou cedilhas nesta gramática
+(*
+ * Realce de sintaxe do Github não reconhece carateres latinos por isso
+ * nao sao usados acentos ou cedilhas nesta gramática
+ *)
 
 (* frases *)
+documento       = { frase } ;
 frase           = declaracao | interrogacao | definicao ;
-declaracao      = oracao , "." ;
-interrogacao    = oracao , "?" ;
-definicao       = oracao , [ precedencia ] ":" , { frase } , "!" ;
-precedencia     = "::" numero [ numero ] ;
+declaracao      = periodo , "." ;
+interrogacao    = periodo , "?" ;
+definicao       = oracao , [ precedencia ] , ":" , { frase } , "!" ;
+precedencia     = "::" , numero , [ numero ] ;
 
-(* oracao e construcao *)
-oracao          = construcao , { ";" , construcao } ;
-construcao      = { termo } | ( construcao , "," , construcao ) ;
+(* periodo e oracao *)
+periodo         = oracao , { ";" , { oracao , "," , oracao } } ;
+oracao          = [ espaco ] , termo , { espaco , termo } ;
 termo           = item | grupo ;
 grupo           = expressao | bloco | padrao | texto | comentario ;
 
-(* grupos *)
+(* grupos de código *)
 expressao       = "[" , oracao | { frase } , "]" ;
 bloco           = "{" , oracao | { frase } , "}" ;
 padrao          = "(" , oracao | { frase } , ")" ;
-texto           = texto normal | texto literal ;
-texto normal    = "'" , oracao | { frase } , "'" ;
-texto literal   = '"' , oracao | { frase } , '"' ;
-comentario      = '"""' , { oracao | frase } , '"""' ;
+
+(* texto e comentario *)
+texto           = texto normal | texto literal | texto bruto ;
+texto normal    = "'" { ? catere ? - "'" - "\" | escape de texto } , "'" ;
+texto literal   = '"' { ? catere ? - '"' - "\" | "\" , ? caratere ? } , '"' ;
+texto bruto     = 'b"' , { ? caratere ? - '"' } , '"' ;
+escape de texto = "\" (expressao | bloco | padrao | ? caratere ? ) ;
+comentario      = '#' , ? caratere ? , '\n' | '#' , grupo ;
 
 (* item *)
-item          = palavra | numero | simbolo | literal ;
-palavra       = { ? letras latinas ? } ;
-numero        = ? numero inteiro, numero real ? ;
-simbolo       = ? caratere ? - palavra - numero - pontuacao ;
-literal       = "\" , item ;
+item            = palavra | numero | simbolo | literal ;
+palavra         = { ? letras latinas ? } ;
+numero          = ? numero inteiro, numero real ? ;
+simbolo         = ? caratere ? - palavra - numero - pontuacao ;
+literal         = "\" , { ? caratere ? - "\" - espaco }  ;
 
 (* pontuacao *)
-pontuacao     = finalizador | separador | delimitador | escape ;
+pontuacao       = finalizador | separador | delimitador | escape ;
 finalizador     =  "." | "?" | "!" ;
-separador     = "," | ";" | "::" | ":" ;
-delimitador   = "{" | "}" | "[" | "]" | "(" | ")" | "'" | '"' | ;
-escape        = "\" ;
+separador       = "," | ";" | "::" | ":" ;
+delimitador     = "{" | "}" | "[" | "]" | "(" | ")" | "'" | '"' ;
+escape          = "\" ;
+espaço          = { " " } ;
 ```
 
-Ver uma implementação como gramática [antlr4](app/src/main/antlr/org/quipa/dialogo/Dialogo.g4)
+Ver uma implementação como gramática [antlr4](app/src/main/antlr/org/quipa/dialogo/Gramatica.g4)
 
 ## Inspiração
 A linguagem é filosoficamente inspirada pela linguagem [Logo](https://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](https://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [Smalltalk](https://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](https://pt.wikipedia.org/wiki/Alan_Kay). Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de *[construções](https://en.wikipedia.org/wiki/Construction_grammar)*, frases com espaços que podem ser completadas.
