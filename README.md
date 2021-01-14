@@ -96,7 +96,7 @@ interrogacao    = periodo , "?" ;
 definicao       = oracao , [ precedencia ] , ":" , { frase } , "!" ;
 precedencia     = "::" , numero , [ numero ] ;
 
-(* periodo e oracao *)
+(* período e oração *)
 periodo         = oracao , { ";" , { oracao , "," , oracao } } ;
 oracao          = [ espaco ] , termo , { espaco , termo } ;
 termo           = item | grupo ;
@@ -107,10 +107,10 @@ expressao       = "[" , oracao | { frase } , "]" ;
 bloco           = "{" , oracao | { frase } , "}" ;
 padrao          = "(" , [ operador kleene ] , (oracao | { frase }) , ")" ;
 
-(* texto e comentario *)
+(* texto e comentário *)
 texto           = texto normal | texto literal | texto bruto ;
-texto normal    = "'" { ? catere ? - "'" - "\" | escape de texto } , "'" ;
-texto literal   = '"' { ? catere ? - '"' - "\" | "\" , ? caratere ? } , '"' ;
+texto normal    = "'" { ? caratere ? - "'" - "\" | escape de texto } , "'" ;
+texto literal   = '"' { ? caratere ? - '"' - "\" | "\" , ? caratere ? } , '"' ;
 texto bruto     = 'b"' , { ? caratere ? - '"' } , '"' ;
 escape de texto = "\" (expressao | bloco | padrao | ? caratere ? ) ;
 comentario      = '#' , ? caratere ? , '\n' | '#' , grupo ;
@@ -122,7 +122,7 @@ numero          = ? numero inteiro, numero real ? ;
 simbolo         = ? caratere ? - palavra - numero - pontuacao ;
 literal         = "\" , { ? caratere ? - "\" - espaco }  ;
 
-(* pontuacao *)
+(* pontuação *)
 pontuacao       = finalizador | separador | delimitador | escape ;
 finalizador     =  "." | "?" | "!" ;
 separador       = "," | ";" | ":" ;
@@ -130,14 +130,14 @@ delimitador     = "[" | "]" | "{" | "}" | "(" | ")" | "'" | '"' ;
 escape          = "\" ;
 espaco          = { " " } ;
 
-(* operadores kleene)
+(* operadores kleene *)
 operador kleene = opcao kleene | soma kleene | estrela kleene ;
 opcao kleene    = "?" ;
 soma kleeene    = "+" ;
 estrela kleene  = "*" ;
 ```
 
-Ver uma implementação como gramática [antlr4](app/src/main/antlr/org/quipa/dialogo/Gramatica.g4)
+Ver uma implementação como gramática [antlr4](app/src/main/antlr/org/quipa/dialogo/Gramatica.g4).
 
 ## Inspiração
 A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay). Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de *[construções](http://en.wikipedia.org/wiki/Construction_grammar)*, frases com espaços que podem ser completadas.
