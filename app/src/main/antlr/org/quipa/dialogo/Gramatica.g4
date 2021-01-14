@@ -21,7 +21,8 @@ grupo           : expressão | bloco | padrão | texto | comentário ;
 // grupos de código
 expressão       : '[' (oração | (frase)+) ']' ;
 bloco           : '{' (oração | (frase)+) '}' ;
-padrão          : '(' (oração | (frase)+) ')' ;
+padrão          : '(' (operadorKleene)? (oração | (frase)+) ')' ;
+operadorKleene  : OPÇÃO_KLEENE | SOMA_KLEENE | ESTRELA_KLEENE ;
 
 // texto
 texto           : textoNormal | textoLiteral | textoBruto ;
@@ -45,6 +46,10 @@ NÚMERO          : (DIGÍTO)+ (',' (DIGÍTO)+)? ;
 SÍMBOLO         : [^\\[\]{}().?!,;:'"] ;
 LITERAL         : '\\' [^\\]*? ;
 ESPAÇO          : [\s]+ -> skip ;
+
+OPÇÃO_KLEENE    : '?'
+SOMA_KLEENE     : '+'
+ESTRELA_KLEENE  : '*'
 
 fragment LETRA  : [\p{Letter}] ;
 fragment DIGÍTO : [0-9] ;

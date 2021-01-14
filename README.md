@@ -17,7 +17,7 @@ Permitir qualquer pessoa criar sistemas e bancos de informação e conhecimento 
 ## Histórico
 Esta linguagem foi inspirada por experiências de ensino/aprendizado do [Projeto Quipá](https://www.facebook.com/projetoquipa/) durante a sua campanha "Ação no Sertão" de 2019 no Território Serra da Capivara, Piauí, Brasil. Durante esta campanha foram organizados cursos em colaboração com a [Cáritas Diocesana de São Raimundo Nonato](https://www.facebook.com/CaritasSRN/) junto com comunidades rurais, técnicos e profissionais de extensão e estudantes de ensino técnico da Escola Família Agrícola da Serra da Capivara.
 
-A linguagem está sendo concebida por Maxim Simões de Abreu Jaffe no âmbito do mestrado em Gestão dos Recursos Naturais da [Universidade de Trás-os-Montes e Alto Douro, Portugal](https://www.utad.pt/). Será utilizada futuramente para extensão rural e agroecológica em comunidades rurais e urbanas no Território Serra da Capivara, Piauí, Brasil.
+A linguagem está sendo concebida por Maxim Simões de Abreu Jaffe no âmbito do mestrado em Gestão dos Recursos Naturais da [Universidade de Trás-os-Montes e Alto Douro, Portugal](http://www.utad.pt/). Será utilizada futuramente para extensão rural e agroecológica em comunidades rurais e urbanas no Território Serra da Capivara, Piauí, Brasil.
 
 ## Sintáxe e Semántica
 
@@ -105,7 +105,11 @@ grupo           = expressao | bloco | padrao | texto | comentario ;
 (* grupos de código *)
 expressao       = "[" , oracao | { frase } , "]" ;
 bloco           = "{" , oracao | { frase } , "}" ;
-padrao          = "(" , oracao | { frase } , ")" ;
+padrao          = "(" , [ operador kleene ] , (oracao | { frase }) , ")" ;
+operador kleene = opcao kleene | soma kleene | estrela kleene ;
+opcao kleene    = "?" ;
+soma kleeene    = "+" ;
+estrela kleene  = "*" ;
 
 (* texto e comentario *)
 texto           = texto normal | texto literal | texto bruto ;
@@ -134,28 +138,28 @@ espaco          = { " " } ;
 Ver uma implementação como gramática [antlr4](app/src/main/antlr/org/quipa/dialogo/Gramatica.g4)
 
 ## Inspiração
-A linguagem é filosoficamente inspirada pela linguagem [Logo](https://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](https://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [Smalltalk](https://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](https://pt.wikipedia.org/wiki/Alan_Kay). Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de *[construções](https://en.wikipedia.org/wiki/Construction_grammar)*, frases com espaços que podem ser completadas.
+A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay). Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de *[construções](http://en.wikipedia.org/wiki/Construction_grammar)*, frases com espaços que podem ser completadas.
 
 Linguagens de programação que influenciam a proposta:
 * Logo
 * Smalltalk
-* [Lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language))/[Scheme](https://en.wikipedia.org/wiki/Scheme_(programming_language))
-* [Prolog](https://en.wikipedia.org/wiki/Prolog)
+* [Lisp](http://en.wikipedia.org/wiki/Lisp_(programming_language))/[Scheme](http://en.wikipedia.org/wiki/Scheme_(programming_language))
+* [Prolog](http://en.wikipedia.org/wiki/Prolog)
 * [Inform 7](http://inform7.com/)
 * [Attempto Controlled English](http://attempto.ifi.uzh.ch/site/)
 * [Rebol](http://www.rebol.com/)
-* [HyperTalk](https://en.wikipedia.org/wiki/HyperTalk)
-* [Dylan](https://en.wikipedia.org/wiki/Dylan_(programming_language))
-* [Tcl](https://www.tcl.tk/)
-* [CGOL](https://en.wikipedia.org/wiki/CGOL)
+* [HyperTalk](http://en.wikipedia.org/wiki/HyperTalk)
+* [Dylan](http://en.wikipedia.org/wiki/Dylan_(programming_language))
+* [Tcl](http://www.tcl.tk/)
+* [CGOL](http://en.wikipedia.org/wiki/CGOL)
 
 ## Implementação
-Atualmente o projeto está a considerar desenvolver o primeiro protótipo na linguagem [Groovy](https://groovy-lang.org/), sendo possivelmente complementada com código em Java e outras linguagens JVM ([Kotlin](https://kotlinlang.org/) e [Scala](https://scala-lang.org/)). Groovy é uma linguagem dinâmica multi-paradigma com diversas características que são interessantes para o projeto:
+Atualmente o projeto está a considerar desenvolver o primeiro protótipo na linguagem [Groovy](http://groovy-lang.org/), sendo possivelmente complementada com código em Java e outras linguagens JVM ([Kotlin](http://kotlinlang.org/) e [Scala](http://scala-lang.org/)). Groovy é uma linguagem dinâmica multi-paradigma com diversas características que são interessantes para o projeto:
 * Metaprogramação dinâmica e estática
 * Tipagem gradual
 * Despacho múltiplo
-* *Closures*
+* *Closures* (fecho ou clausura)
 * Interoperabilidade com Java
 
-O interpretador será baseado no algoritmo *Top Down Operator Precedence* desenvolvido por Vaughan Pratt, usados na antiga linguagem [CGOL](https://en.wikipedia.org/wiki/CGOL) desenvolvida nos anos 70.
+O interpretador será baseado no algoritmo *Top Down Operator Precedence* desenvolvido por Vaughan Pratt, usados na antiga linguagem [CGOL](http://en.wikipedia.org/wiki/CGOL) desenvolvida nos anos 70.
 
