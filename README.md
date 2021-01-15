@@ -8,7 +8,7 @@ Permitir qualquer pessoa criar sistemas e bancos de informação e conhecimento 
 
 * DEVE ser fácil de ler, compreender e ser usada por qualquer pessoa.
 * DEVE ser fácil de aprender e ensinar num curto espaço de tempo.
-* DEVE ser baseada em Português e ter uma sintáxe e semântica semelhante à linguagem natural, mas DEVE ser formalmente definida e não-ambígua.
+* DEVE ser baseada em Português e ter uma sintaxe e semântica semelhante à linguagem natural, mas DEVE ser formalmente definida e não-ambígua.
 * DEVE permitir conceber e criar sistemas de informação e conhecimento e permitir criar, ler, atualizar e apagar informações.
 * DEVE ser fácil de instalar e configurar e NÃO DEVE depender de conexão de Internet para tal, mas PODE utilizá-la se houver uma conexão.
 * PODE facilitar a a integração de sistemas de informação e conhecimento existentes (através de API, bindings e protocolos)
@@ -19,34 +19,34 @@ Esta linguagem foi inspirada por experiências de ensino/aprendizado do [Projeto
 
 A linguagem está sendo concebida por Maxim Simões de Abreu Jaffe no âmbito do mestrado em Gestão dos Recursos Naturais da [Universidade de Trás-os-Montes e Alto Douro, Portugal](http://www.utad.pt/). Será utilizada futuramente para extensão rural e agroecológica em comunidades rurais e urbanas no Território Serra da Capivara, Piauí, Brasil.
 
-## Sintáxe e Semántica
+## Sintaxe e Semántica
 
-A sintáxe será predominantemente dinâmica, podendo ser redefinada em tempo real. A pontuação da linguagem tem regras fixas, alterando como a linguagem é lida (avaliada). As frases são declarações, interrogações (perguntas), definições.
+A sintaxe será predominantemente dinâmica, podendo ser redefinada em tempo real. A pontuação da linguagem tem regras fixas, alterando como a linguagem é lida (avaliada). As frases são declarações, interrogações (perguntas), definições.
 
-Exemplos (assumindo algumas regras pré-definiadas):
+Exemplos (assumindo algumas regras pré-definidas):
 * Declarar um facto:
 ```
 A Maria é uma agricultora.
-```
-* Definir uma regra:
-```
-{Uma pessoa} é um agricultor: A pessoa planta (algo)!
 ```
 * Perguntar sobre um facto ou regra.
 ```
 O José é um apicultor?
 ```
+* Definir uma regra:
+```
+(Uma pessoa) é um agricultor: A pessoa planta (algo)!
+```
 * Declarar factos em simultáneo:
 ```
 (A Maria e o José) são quilombolas.
 ```
-* Definir várias regras:
-```
-(Um agricultor ou uma agricultora) é criador de ovelha: O agricultor cria ovelha; a agricultora cria ovelha!
-```
 * Perguntar sobre vários factos:
 ```
 (A Ana e o Pedro) são criadores de cabra?
+```
+* Definir regra com tipo composto:
+```
+(Um agricultor ou uma agricultora) é criador de ovelha: O agricultor cria ovelha; a agricultora cria ovelha!
 ```
 * Perguntar sobre um facto (com um expressão de aritmética)
 ```
@@ -60,7 +60,7 @@ senão {
   O Pedro planta 4 hectares de consórcio de milho.
 }.
 ```
-* Declarar um facto repetidamente:
+* Usar regras de modo repetido:
 ```
 O Lucas repete 50 vezes {
   Ele cava um berço.
