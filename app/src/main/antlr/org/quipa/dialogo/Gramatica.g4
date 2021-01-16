@@ -10,7 +10,7 @@ frase           : declaracao | interrogacao | definicao ;
 declaracao      : periodo '.' ;
 interrogacao    : periodo '?' ;
 definicao       : oracao (precedencia)? ':' (frase)+ '!' ;
-precedencia     : '::' NUMERO (NUMERO)? ;
+precedencia     : '::' NUMERO ("," NUMERO)? ;
 
 // período e oração
 periodo         : oracao (';' (oracao ',' oracao)+)+ ;
@@ -19,9 +19,9 @@ termo           : ITEM | grupo ;
 grupo           : expressao | bloco | padrao | texto | comentario ;
 
 // grupos de código
-expressao       : '[' (oracao | (frase)+) ']' ;
-bloco           : '{' (oracao | (frase)+) '}' ;
-padrao          : '(' (operadorKleene)? (oracao | (frase)+) ')' ;
+expressao       : '[' (periodo | (frase)+) ']' ;
+bloco           : '{' (periodo | (frase)+) '}' ;
+padrao          : '(' (operadorKleene)? (periodo | (frase)+) ')' ;
 operadorKleene  : OPCAO_KLEENE | SOMA_KLEENE | ESTRELA_KLEENE ;
 
 // texto

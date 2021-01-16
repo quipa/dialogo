@@ -94,7 +94,7 @@ frase           = declaracao | interrogacao | definicao ;
 declaracao      = periodo , "." ;
 interrogacao    = periodo , "?" ;
 definicao       = oracao , [ precedencia ] , ":" , { frase } , "!" ;
-precedencia     = "::" , numero , [ numero ] ;
+precedencia     = "::" , numero ,  [ "," , numero ] ;
 
 (* período e oração *)
 periodo         = oracao , { ";" , { oracao , "," , oracao } } ;
@@ -103,9 +103,9 @@ termo           = item | grupo ;
 grupo           = expressao | bloco | padrao | texto | comentario ;
 
 (* grupos de código *)
-expressao       = "[" , oracao | { frase } , "]" ;
-bloco           = "{" , oracao | { frase } , "}" ;
-padrao          = "(" , [ operador kleene ] , (oracao | { frase }) , ")" ;
+expressao       = "[" , periodo | { frase } , "]" ;
+bloco           = "{" , periodo | { frase } , "}" ;
+padrao          = "(" , [ operador kleene ] , (periodo | { frase }) , ")" ;
 
 (* texto e comentário *)
 texto           = texto normal | texto literal | texto bruto ;
@@ -140,7 +140,7 @@ estrela kleene  = "*" ;
 Ver uma implementação como gramática [antlr4](app/src/main/antlr/org/quipa/dialogo/Gramatica.g4).
 
 ## Inspiração
-A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay). Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de *[construções](http://en.wikipedia.org/wiki/Construction_grammar)*, frases com espaços que podem ser completadas.
+A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay), ambas baseadas na filosofia do construcionismo. Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de *[construções](http://en.wikipedia.org/wiki/Construction_grammar)*, frases com espaços que podem ser completadas.
 
 Linguagens de programação que influenciam a proposta:
 * Logo
@@ -157,8 +157,9 @@ Linguagens de programação que influenciam a proposta:
 
 ## Implementação
 Atualmente o projeto está a considerar desenvolver o primeiro protótipo na linguagem [Groovy](http://groovy-lang.org/), sendo possivelmente complementada com código em Java e outras linguagens JVM ([Kotlin](http://kotlinlang.org/) e [Scala](http://scala-lang.org/)). Groovy é uma linguagem dinâmica multi-paradigma com diversas características que são interessantes para o projeto:
-* Metaprogramação dinâmica e estática
+
 * Tipagem gradual
+* Metaprogramação dinâmica e estática
 * Despacho múltiplo
 * *Closures* (fecho ou clausura)
 * Interoperabilidade com Java

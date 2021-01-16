@@ -1,12 +1,12 @@
 
-"Frases".
+# Frases
 
 (vários termos) ":" (várias frases) "!" :: 100, 400 !
 (vários termos) (? "::" (até dois números)) ":" (várias frases) "!" :: 100, 400 !
 (vários termos) "."         :: 100 !
 (vários termos) "?"         :: 100 !
 
-"Grupos".
+# Grupos
 
 "[" (várias frases) "]"     :: 200, 0 !
 "(" (várias frases) ")"     :: 200, 0 !
@@ -16,6 +16,8 @@
 (vários termos) "," (vários termos) ::  50, 50
 (vários termos) ";" (vários termos) ::  75, 75
 "\" (termo)                 :: 500, 0
+
+# Frases padrão
 
 se (uma condição) :: 2 : !
 se (uma condição) (? então) (um termo) (? senão) (um termo) :: 2 : !
