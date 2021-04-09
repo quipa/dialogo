@@ -80,6 +80,7 @@ Em termos de paradigma de orientação à objetos, a linguagem suportará heran�
 Em termos do paradigma lógico, a linguagem será baseado numa base de factos e procedimentos (comandos, pedidos e perguntas).
 Em termos funcionais, definições sem palavras chave poderão ser considerada expressões lambda.
 
+## Gramática EBNF
 A linguagem terá a seguinte sintaxe fixa para a pontuação (gramática EBNF):
 
 ```EBNF
@@ -137,10 +138,8 @@ soma kleeene    = "+" ;
 estrela kleene  = "*" ;
 ```
 
-Ver uma implementação como gramática [antlr4](app/src/main/antlr/org/quipa/dialogo/Gramatica.g4).
-
 ## Inspiração
-A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay), ambas baseadas na filosofia do construcionismo. Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de *[construções](http://en.wikipedia.org/wiki/Construction_grammar)*, frases com espaços que podem ser completadas.
+A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert), [Wally Feurzeig](https://en.wikipedia.org/wiki/Wally_Feurzeig), [Cynthia Solomon](https://en.wikipedia.org/wiki/Cynthia_Solomon) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay), [Dan Ingalls](https://en.wikipedia.org/wiki/Dan_Ingalls) e [Adele Goldberg](https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)), ambas baseadas na filosofia do construcionismo. Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de *[construções](http://en.wikipedia.org/wiki/Construction_grammar)*, frases com espaços que podem ser completadas.
 
 Linguagens de programação que influenciam a proposta:
 * Logo
@@ -154,15 +153,11 @@ Linguagens de programação que influenciam a proposta:
 * [Dylan](http://en.wikipedia.org/wiki/Dylan_(programming_language))
 * [Tcl](http://www.tcl.tk/)
 * [CGOL](http://en.wikipedia.org/wiki/CGOL)
+* [Raku](https://www.raku.org/)
+* [Kernel](https://web.cs.wpi.edu/~jshutt/kernel.html)
 
 ## Implementação
-Atualmente o projeto está a considerar desenvolver o primeiro protótipo na linguagem [Groovy](http://groovy-lang.org/), sendo possivelmente complementada com código em Java e outras linguagens JVM ([Kotlin](http://kotlinlang.org/) e [Scala](http://scala-lang.org/)). Groovy é uma linguagem dinâmica multi-paradigma com diversas características que são interessantes para o projeto:
+Atualmente o projeto está a considerar utilizar a plataforma Java para implementação e suas diversas linguagens, devido a sua máquina virtual (JVM) e bibliotecas (APIs).
 
-* Tipagem gradual
-* Metaprogramação dinâmica e estática
-* Despacho múltiplo
-* *Closures* (fecho ou clausura)
-* Interoperabilidade com Java
-
-O interpretador será baseado no algoritmo *Top Down Operator Precedence* desenvolvido por Vaughan Pratt, usados na antiga linguagem [CGOL](http://en.wikipedia.org/wiki/CGOL) desenvolvida nos anos 70.
+A primeira implementação será um interpretador de árvore baseado no algoritmo *Top Down Operator Precedence* desenvolvido por Vaughan Pratt desenvolvido nos anos 70 (e aplicado na linguagem CGOL.
 
