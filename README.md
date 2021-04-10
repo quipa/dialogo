@@ -350,13 +350,13 @@ literal       = nulo | booleano | numero | texto ;
 
 
 grupo         = expressao | bloco | padrao ;
-expressao     = '[' , ( periodo | paragrafo ) , [ espaços ] , ']'.
-bloco         = '{' , ( periodo | paragrafo ) , [ espaços ] , '}'.
-padrao        = '(' , período , [ espaços ] , ')'.
+expressao     = '[' , ( periodo | paragrafo ) , [ espacos ] , ']'.
+bloco         = '{' , ( periodo | paragrafo ) , [ espacos ] , '}'.
+padrao        = '(' , periodo , [ espacos ] , ')'.
 
 lista         = ( item - chave | grupo ) ,
-                ( ';' , espaços , ( item - chave | grupo ) ) ,
-                { ';' , espaços , ( item - chave | grupo } ;
+                ( ';' , espacos , ( item - chave | grupo ) ) ,
+                { ';' , espacos , ( item - chave | grupo } ;
 
 (*****************
  Gramatica Lexical
