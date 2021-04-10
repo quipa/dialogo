@@ -342,7 +342,7 @@ literal       = numero | texto ;
 grupo         = expressao | bloco | padrao ;
 expressao     = '[' , ( periodo | paragrafo ) , [ espaços ] , ']'.
 bloco         = '{' , ( periodo | paragrafo ) , [ espaços ] , '}'.
-padrão        = '(' , período , [ espaços ] , ')'.
+padrao        = '(' , período , [ espaços ] , ')'.
 
 lista         = ( item - chave | grupo ) ,
                 ( ';' , espaços , ( item - chave | grupo ) ) ,
@@ -388,13 +388,13 @@ COMPOSTO      = '`' , CORINGA { CORINGA - '`' | '\`' } , '`' ;
 
 LITERAL       = NUMERO | TEXTO ;
 
-NUMERO        = DIGITO { DÍGITO } ;
+NUMERO        = DIGITO { DIGITO } ;
 
-TEXTO         = "'" , { CORINGA - "'" | "\'" } , "'
+TEXTO         = "'" , { CORINGA - "'" | "\'" } , '"'
               | '"' , { CORINGA - '"' | '\"' } , '"'
               | '«' , { CORINGA - '»' | '\»' } , '»' ;
 
-MISTO         = CARATERE , { CARATERE | SINAL } ,  CARATERE ;
+MISTO         = CARATERE , { CARATERE | SINAL } , CARATERE ;
 
 COMENTARIO    = '#' , { '#' } , ( CORINGA - '#' | '\#' ) ,
                 { CORINGA - '#' | '\#' } , '#' , { '#' } ;
