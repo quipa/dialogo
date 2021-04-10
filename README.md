@@ -123,8 +123,8 @@ A linguagem suportará os seguintes paradigmas:
 A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert), [Wally Feurzeig](https://en.wikipedia.org/wiki/Wally_Feurzeig), [Cynthia Solomon](https://en.wikipedia.org/wiki/Cynthia_Solomon) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay), [Dan Ingalls](https://en.wikipedia.org/wiki/Dan_Ingalls) e [Adele Goldberg](https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)), ambas baseadas na filosofia do construcionismo.
 
 Ela é baseada em conceitos de linguística cognitiva:
-* **[Construções](http://en.wikipedia.org/wiki/Construction_grammar)**, frases incompletas com padrões (*slots*) que podem ser preenchidos.
-* **[Gramática categorial combinatória](https://pt.wikipedia.org/wiki/Gramática_categorial_combinatória)** que associa a cada palavra um combinador que permite construir frases.
+* [Construções](http://en.wikipedia.org/wiki/Construction_grammar), frases incompletas com padrões (*slots*) que podem ser preenchidos com palavras ou outras construções.
+* [Gramática categorial combinatória](https://pt.wikipedia.org/wiki/Gramática_categorial_combinatória) que associa a cada palavra um combinador que permite construir frases.
 
 Outras linguagens de programação que influenciam a proposta:
 * Logo
@@ -202,9 +202,10 @@ oração        ->> (~ espaços) termo (* espaços termo).
 
 termo         ->> item | grupo | lista.
 
-item          ->> variável | chave | `variável chave` | identificador
-                | literal | misto | comentário.
-literal       ->> número | texto.
+item          ->> literal | variável | chave | `variável chave`
+                | identificador | misto | comentário.
+
+literal       ->> nulo | booleano | número | texto.
 
 grupo         ->> expressão | bloco | padrão.
 expressão     ->> '[' (período | parágrafo) (~ espaços) ']'.
@@ -220,11 +221,9 @@ Gramática Lexical
 
 espaços       ->> (+ ESPAÇO).
 
-variável          ->> ':' IDENTIFICADOR.
-chave             ->>     IDENTIFICADOR ':'.
-`variável chave`  ->> ':' IDENTIFICADOR ':'.
+nulo          ->> 'nulo'.
 
-identificador ->> IDENTIFICADOR (* ':' (IDENTIFICADOR | LITERAL)).
+booleano      ->> 'verdadeiro' | 'falso'.
 
 número        ->> real | fracional | inteiro.
 real          ->> ('-' | '+') NÚMERO ',' NÚMERO.
@@ -237,6 +236,12 @@ hexadecimal   ->> '0x' NÚMERO.
 
 texto         ->> TEXTO.
 
+variável          ->> ':' IDENTIFICADOR.
+chave             ->>     IDENTIFICADOR ':'.
+`variável chave`  ->> ':' IDENTIFICADOR ':'.
+
+identificador ->> IDENTIFICADOR (* ':' (IDENTIFICADOR | LITERAL)).
+
 misto         ->> MISTO.
 
 comentário    ->> COMENTÁRIO.
@@ -247,7 +252,8 @@ Gramática Morfológica
 
 IDENTIFICADOR ->> RESERVADO | PALAVRA | OPERADOR | COMPOSTO.
 
-RESERVADO     ->> 'macro' | 'função' | 'comando' | 'regra' | 'tipo' | LÉXICO.
+RESERVADO     ->> 'macro' | 'função' | 'comando' | 'regra' | 'tipo'
+                | 'nulo' | 'verdadeiro' | 'falso' | LÉXICO.
 PALAVRA       ->> (+ LETRA).
 OPERADOR      ->> (+ SÍMBOLO).
 COMPOSTO      ->> '`' (+  CORINGA - '`' | '\`') '`'.
@@ -337,9 +343,11 @@ oracao        = [ espacos ] , termo , { espacos , termo } ;
 
 termo         = item | grupo | lista ;
 
-item          = variavel | chave | variavel chave | identificador
-              | literal | comentario | misto ;
-literal       = numero | texto ;
+item          = literal | variavel | chave | variavel chave | identificador
+              | misto | comentario ;
+
+literal       = nulo | booleano | numero | texto ;
+
 
 grupo         = expressao | bloco | padrao ;
 expressao     = '[' , ( periodo | paragrafo ) , [ espaços ] , ']'.
@@ -356,11 +364,9 @@ lista         = ( item - chave | grupo ) ,
 
 espacos       = ESPACO , { ESPACO } ;
 
-variavel        = ':' , IDENTIFICADOR ;
-chave           =     , IDENTIFICADOR , ':' ;
-variavel chave  = ':' , IDENTIFICADOR , ':' ;
+nulo          = 'nulo' ;
 
-identificador = IDENTIFICADOR , { ':' , ( IDENTIFICADOR | LITERAL ) } ;
+booleano      = 'verdadeiro' | 'falso' ;
 
 numero        = real | fracional | inteiro.
 real          = ('-' | '+') , NUMERO , ',' , NUMERO ;
@@ -373,6 +379,12 @@ hexadecimal   = '0x' , NUMERO ;
 
 texto         = TEXTO ;
 
+variavel        = ':' , IDENTIFICADOR ;
+chave           =     , IDENTIFICADOR , ':' ;
+variavel chave  = ':' , IDENTIFICADOR , ':' ;
+
+identificador = IDENTIFICADOR , { ':' , ( IDENTIFICADOR | LITERAL ) } ;
+
 comentario    = COMENTARIO ;
 
 misto         = MISTO ;
@@ -383,7 +395,8 @@ misto         = MISTO ;
 
 IDENTIFICADOR = RESERVADO | PALAVRA | OPERADOR | COMPOSTO.
 
-RESERVADO     = 'macro' | 'função' | 'comando' | 'regra' | 'tipo' | LEXICO ;
+RESERVADO     = 'macro' | 'função' | 'comando' | 'regra' | 'tipo'
+              | 'nulo' | 'verdadeiro' | 'falso' | LEXICO ;
 PALAVRA       = LETRA , { LETRA } ;
 OPERADOR      = SIMBOLO , { SIMBOLO } ;
 COMPOSTO      = '`' , CORINGA { CORINGA - '`' | '\`' } , '`' ;
