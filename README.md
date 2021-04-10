@@ -120,9 +120,13 @@ A linguagem suportará os seguintes paradigmas:
 **Em construção**
 
 ## Inspiração
-A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert), [Wally Feurzeig](https://en.wikipedia.org/wiki/Wally_Feurzeig), [Cynthia Solomon](https://en.wikipedia.org/wiki/Cynthia_Solomon) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay), [Dan Ingalls](https://en.wikipedia.org/wiki/Dan_Ingalls) e [Adele Goldberg](https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)), ambas baseadas na filosofia do construcionismo. Ela é baseada em princípios da linguística cognitiva, particularmente a ideia de *[construções](http://en.wikipedia.org/wiki/Construction_grammar)*, frases com espaços que podem ser completadas.
+A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert), [Wally Feurzeig](https://en.wikipedia.org/wiki/Wally_Feurzeig), [Cynthia Solomon](https://en.wikipedia.org/wiki/Cynthia_Solomon) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay), [Dan Ingalls](https://en.wikipedia.org/wiki/Dan_Ingalls) e [Adele Goldberg](https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)), ambas baseadas na filosofia do construcionismo.
 
-Linguagens de programação que influenciam a proposta:
+Ela é baseada em conceitos de linguística cognitiva:
+* **[construções](http://en.wikipedia.org/wiki/Construction_grammar)**, frases incompletas com padrões (*slots*) que podem ser preenchidos.
+* **[Combinadores gramaticais](https://pt.wikipedia.org/wiki/Gramática_categorial_combinatória)** associam a cada palavra um combinador que permite construir frases.
+
+Outras linguagens de programação que influenciam a proposta:
 * Logo
 * Smalltalk
 * [Lisp](http://en.wikipedia.org/wiki/Lisp_(programming_language))/[Scheme](http://en.wikipedia.org/wiki/Scheme_(programming_language))
@@ -144,8 +148,6 @@ Atualmente o projeto está a considerar utilizar a plataforma Java para implemen
 A primeira implementação será um interpretador de árvore baseado no algoritmo *Top Down Operator Precedence* desenvolvido por Vaughan Pratt desenvolvido nos anos 70 (e aplicado na linguagem CGOL.
 
 ## <a name="gramatica"></a> Gramáticas
-
-**NOTA: em atualização**
 
 Seguem duas definições da gramática fixa da linguagem. Ambas devem ser interpretadas como gramáticas [GASE](https://pt.wikipedia.org/wiki/Gramática_de_análise_sintática_de_expressão) (*[PEG](https://en.wikipedia.org/wiki/Parsing_expression_grammar)*) com alternativas selecionadas da esquerda para a direita.
 
