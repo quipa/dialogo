@@ -123,8 +123,8 @@ A linguagem suportará os seguintes paradigmas:
 A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert), [Wally Feurzeig](https://en.wikipedia.org/wiki/Wally_Feurzeig), [Cynthia Solomon](https://en.wikipedia.org/wiki/Cynthia_Solomon) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay), [Dan Ingalls](https://en.wikipedia.org/wiki/Dan_Ingalls) e [Adele Goldberg](https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)), ambas baseadas na filosofia do construcionismo.
 
 Ela é baseada em conceitos de linguística cognitiva:
-* **[construções](http://en.wikipedia.org/wiki/Construction_grammar)**, frases incompletas com padrões (*slots*) que podem ser preenchidos.
-* **[Combinadores gramaticais](https://pt.wikipedia.org/wiki/Gramática_categorial_combinatória)** associam a cada palavra um combinador que permite construir frases.
+* **[Construções](http://en.wikipedia.org/wiki/Construction_grammar)**, frases incompletas com padrões (*slots*) que podem ser preenchidos.
+* **[Gramática categorial combinatória](https://pt.wikipedia.org/wiki/Gramática_categorial_combinatória)** que associa a cada palavra um combinador que permite construir frases.
 
 Outras linguagens de programação que influenciam a proposta:
 * Logo
