@@ -5,8 +5,8 @@ Uma linguagem para diálogo entre humanos e computadores.
 Criar e usar sistemas interativos de informação de modo simples e fléxivel.
 
 ## Requisitos
-* DEVE ser fácil de ler, escrever e compreender por pessoas que tenham uma educação de ensino médio Brasileiro;
-* DEVE ser fácil de ler e compreender por pessoas que tenham uma educação básica com auxílio de terceiros.
+* DEVE ser fácil de ler, escrever e compreender para pessoas com educação de ensino médio Brasileiro;
+* DEVE ser fácil de ler e compreender para pessoas com educação básica e auxílio de terceiros.
 * DEVE ser fácil de aprender e ensinar num curto espaço de tempo;
 * DEVE ser baseada em Português e ter uma sintaxe e semântica quase natural;
 * DEVE ser possível criar, pesquisar, atualizar e apagar informações;
@@ -101,7 +101,7 @@ A sintaxe será predominantemente dinâmica, podendo ser redefinada em tempo rea
 
 ### Exemplos
 
-**Em construção**
+**NOTA: Em construção**
 
 ### Paradigmas
 
@@ -117,7 +117,7 @@ A linguagem suportará os seguintes paradigmas:
 
 ### Notas de *Design*
 
-**Em construção**
+**NOTA: Em construção**
 
 ## Inspiração
 A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert), [Wally Feurzeig](https://en.wikipedia.org/wiki/Wally_Feurzeig), [Cynthia Solomon](https://en.wikipedia.org/wiki/Cynthia_Solomon) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay), [Dan Ingalls](https://en.wikipedia.org/wiki/Dan_Ingalls) e [Adele Goldberg](https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)), ambas baseadas na filosofia do construcionismo.
