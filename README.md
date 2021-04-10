@@ -9,7 +9,7 @@ Criar e usar sistemas interativos de informação de modo simples e fléxivel.
 * DEVE ser fácil de ler e compreender para pessoas com educação básica e auxílio de terceiros.
 * DEVE ser fácil de aprender e ensinar num curto espaço de tempo;
 * DEVE ser baseada em Português e ter uma sintaxe e semântica quase natural;
-* DEVE ser possível criar, pesquisar, atualizar e apagar informações;
+* DEVE ser permitir criar, pesquisar, atualizar e apagar informações de modo simples e fléxivel;
 * DEVE permitir armazenar informações num formato textual legível para humanos;
 * DEVE ser fácil de instalar e configurar, o instalador NÃO DEVE depender de conexão de Internet, mas PODE utilizá-la se houver uma conexão;
 * DEVE ser bem definida e não-ambígua em termos computacionais;
@@ -240,7 +240,7 @@ variável          ->> ':' IDENTIFICADOR.
 chave             ->>     IDENTIFICADOR ':'.
 `variável chave`  ->> ':' IDENTIFICADOR ':'.
 
-identificador ->> IDENTIFICADOR (* ':' (IDENTIFICADOR | LITERAL)).
+identificador ->> IDENTIFICADOR (* ':' (IDENTIFICADOR | LITERAL | MISTO)).
 
 misto         ->> MISTO.
 
@@ -266,7 +266,7 @@ TEXTO         ->> "'" (* CORINGA - "'" | "\'") "'
                 | '"' (* CORINGA - '"' | '\"') '"'
                 | '«' (* CORINGA - '»' | '\»') '»' ;
 
-MISTO         ->> CARATERE (* CARATERE | SINAL) CARATERE.
+MISTO         ->> CARATERE (* CARATERE | SINAL - ':') CARATERE.
 
 COMENTÁRIO    ->> (+ '#') (+ CORINGA - '#' | '\#') (+ '#').
 
@@ -383,7 +383,7 @@ variavel        = ':' , IDENTIFICADOR ;
 chave           =     , IDENTIFICADOR , ':' ;
 variavel chave  = ':' , IDENTIFICADOR , ':' ;
 
-identificador = IDENTIFICADOR , { ':' , ( IDENTIFICADOR | LITERAL ) } ;
+identificador = IDENTIFICADOR , { ':' , ( IDENTIFICADOR | LITERAL | MISTO ) } ;
 
 comentario    = COMENTARIO ;
 
@@ -409,7 +409,7 @@ TEXTO         = "'" , { CORINGA - "'" | "\'" } , '"'
               | '"' , { CORINGA - '"' | '\"' } , '"'
               | '«' , { CORINGA - '»' | '\»' } , '»' ;
 
-MISTO         = CARATERE , { CARATERE | SINAL } , CARATERE ;
+MISTO         = CARATERE , { CARATERE | SINAL  - ':' } , CARATERE ;
 
 COMENTARIO    = '#' , { '#' } , ( CORINGA - '#' | '\#' ) ,
                 { CORINGA - '#' | '\#' } , '#' , { '#' } ;
