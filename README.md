@@ -207,7 +207,7 @@ item            = literal | variavel chave | variavel | chave | identificador
 
 literal         = nulo | booleano | numero | texto ;
 
-variavel chave  = ':' , identificador - reservado , ':' ;
+variavel chave  = ':' , identificador - reservado , ':'
                 | ':' , grupo , variavel chave ;
 variavel        = ':' , identificador - reservado
                 | ':' , grupo , variavel ;
@@ -306,7 +306,7 @@ SIMBOLO   = '+' | '-' | '*' | '/' | '=' | '<' | '>' | '%' | '|' | '&'
 
 SINAL       = PONTO | DELIMITADOR ;
 PONTO       = '.' | '?' | '!' | ':' | ';' | ',' ;
-DELIMITADOR = '[' | ']' | '{' | '}' | '(' | ')' ;
+DELIMITADOR = '[' | ']' | '{' | '}' | '(' | ')'
             | '`' | "'" | '"' | '«' | '»' | '#' ;
 ```
 
@@ -314,17 +314,17 @@ DELIMITADOR = '[' | ']' | '{' | '}' | '(' | ')' ;
 
 As seguintes palavras são reservadas e não podem ser redefinidas, mas podem ser utilizadas como identificadores, chaves (`de:`) ou palavras compostas (`como`, 1a pess. do sing. pres. indi. de *comer*).
 
-* adj.    : adjetivo;
-* adv.    : advérbio;
-* art.    : artigo;
-* conj.   : conjunção;
-* det.    : determinante;
-* prep.   : preposição;
-* pron.   : pronome;
-* quant.  : quantificador;
-* v.      : verbo;
-* n. m.   : nome masculino;
-* n. f.   : nome feminindo;
+adj.    : adjetivo
+adv.    : advérbio
+art.    : artigo
+conj.   : conjunção
+det.    : determinante
+prep.   : preposição
+pron.   : pronome
+quant.  : quantificador
+v.      : verbo
+n. m.   : nome masculino
+n. f.   : nome feminindo
 
 Palavras ambíguas tem várias construções associadas, cada associada a um significado.
 
