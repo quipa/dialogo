@@ -1,0 +1,159 @@
+################################################################################
+Gramática em Dialogo
+
+A seguinte gramática usa a sintaxe da própria linguagem Dialogo.
+
+* `coisa`             não-terminal sintático ou léxico (identificador);
+* `COISA`             não-terminal morfológico (um identificador);
+* `coisa composta`    não-terminal sintático-léxico (identificador composto);
+* ``COISA COMPOSTA``  não terminal morfológico (identificador composto);
+* `'coisa'`           terminal (texto);
+* `"coisa"`           terminal (texto);
+* `(coisa1 coisa2)`   padrão;
+* `# coisa #`         comentário;
+
+Assume-se que os seguintes operadores estão definidos
+
+* `coisas ->> coisa.`   define uma regra gramatical (operador árvore);
+* `coisa1 | coisa2`     regras alternativas;
+* `coisa1 - coisa`      excepção à regra;
+* `(* coisa)`           padrão para zero ou mais `coisa`s;
+* `(+ coisa)`           umpadrão para uma ou mais `coisa`s;
+* `(~ coisa)`           padrão opcional para uma `coisa`.
+
+Precedência dos operadores.
+`-` > `|` > `*` `+` `~` > `->>`
+################################################################################
+
+
+###################
+Gramática Sintática
+###################
+
+documento     ->> parágrafo (~ espaços).
+parágrafo     ->> frase (* espaços frase).
+
+frase         ->> declaração | interrogação | exclamação.
+declaração    ->> período '.'.
+interrogação  ->> período '?'.
+exclamação    ->> período '!'.
+
+período       ->> procedimento | macro | oração.
+
+procedimento  ->> função | comando | regra | tipo.
+função        ->> 'função'  (~ oração) bloco.
+comando       ->> 'comando' (~ oração) bloco.
+regra         ->> 'regra'   oração bloco.
+tipo          ->> 'tipo' (~ identificador) bloco.
+
+macro         ->> 'macro ' procedimento.
+oração        ->> (~ espaços) termo (* espaços termo).
+
+termo         ->> item | grupo | lista.
+
+item          ->> literal | variável | chave | `variável chave`
+                | identificador | misto | comentário.
+
+literal       ->> nulo | booleano | número | texto.
+
+grupo         ->> expressão | bloco | padrão.
+expressão     ->> '[' (período | parágrafo) (~ espaços) ']'.
+bloco         ->> '{' (período | parágrafo) (~ espaços) '}'.
+padrão        ->> '(' período (~ espaços) ')'.
+
+lista         ->> (item - chave | grupo)
+                  (+ ';' espaços (item - chave | grupo)).
+
+#################
+Gramática Lexical
+#################
+
+espaços       ->> (+ ESPAÇO).
+
+nulo          ->> 'nulo'.
+
+booleano      ->> 'verdadeiro' | 'falso'.
+
+número        ->> real | fracional | inteiro.
+real          ->> ('-' | '+') NÚMERO ',' NÚMERO.
+racional      ->> ('-' | '+') NÚMERO '/' NÚMERO.
+inteiro       ->> decimal | binário | octal | hexadecimal.
+decimal       ->> ('-' | '+') NÚMERO.
+binário       ->> '0b' NÚMERO.
+octal         ->> '0o' NÚMERO.
+hexadecimal   ->> '0x' NÚMERO.
+
+texto         ->> TEXTO.
+
+variável          ->> ':' IDENTIFICADOR.
+chave             ->>     IDENTIFICADOR ':'.
+`variável chave`  ->> ':' IDENTIFICADOR ':'.
+
+identificador ->> IDENTIFICADOR (* ':' (IDENTIFICADOR | LITERAL | MISTO)).
+
+misto         ->> MISTO.
+
+comentário    ->> COMENTÁRIO.
+
+#####################
+Gramática Morfológica
+#####################
+
+IDENTIFICADOR ->> RESERVADO | PALAVRA | OPERADOR | COMPOSTO.
+
+RESERVADO     ->> 'macro' | 'função' | 'comando' | 'regra' | 'tipo'
+                | 'nulo' | 'verdadeiro' | 'falso' | LÉXICO.
+PALAVRA       ->> (+ LETRA).
+OPERADOR      ->> (+ SÍMBOLO).
+COMPOSTO      ->> '`' (+  CORINGA - '`' | '\`') '`'.
+
+LITERAL       ->> NÚMERO | TEXTO.
+
+NÚMERO        ->> (+ DÍGITO).
+
+TEXTO         ->> "'" (* CORINGA - "'" | "\'") "'
+                | '"' (* CORINGA - '"' | '\"') '"'
+                | '«' (* CORINGA - '»' | '\»') '»' ;
+
+MISTO         ->> CARATERE (* CARATERE | SINAL - ':') CARATERE.
+
+COMENTÁRIO    ->> (+ '#') (+ CORINGA - '#' | '\#') (+ '#').
+
+LÉXICO        ->> `VERBO DE LIGAÇÃO` | ADVÉRBIO | DETERMINANTE | PRONOME
+                | QUANTIFICADOR | PREPOSIÇÃO | CONJUNÇÃO | CONTRAÇÃO.
+
+#########
+Carateres
+#########
+
+CORINGA   ->> ESPAÇO | CARATERE | SINAL.
+
+ESPAÇO    ->> ' ' | '\n' | '\t'.
+
+CARATERE  ->> LETRA | DÍGITO | SÍMBOLO.
+SINAL     ->> PONTO | DELIMITADOR.
+
+LETRA     ->> 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k'
+            | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v'
+            | 'w' | 'x' | 'y' | 'z' |
+            | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K'
+            | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V'
+            | 'W' | 'X' | 'Y' | 'Z'
+            | 'ç' | 'Ç'
+            | 'ã' | 'õ'
+            | 'á' | 'é' | 'í' | 'ó' | 'ú'
+            | 'à' | 'è' | 'ì' | 'ò' | 'ù'
+            | 'â' | 'ê' | 'ô'
+            | 'Ã' | 'Õ'
+            | 'Á' | 'É' | 'Í' | 'Ó' | 'Ú'
+            | 'À' | 'È' | 'Ì' | 'Ò' | 'Ù'
+            | 'Â' | 'Ê' | 'Ô'.
+
+DÍGITO    ->> '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'.
+SÍMBOLO   ->> '+' | '-' | '*' | '/' | '=' | '<' | '>' | '%' | '|' | '&'
+            | '$' | '@' | '\' | '_' | '~' | '^'.
+
+PONTO         ->> '.' | '?' | '!' | ':' | ';' | ','.
+DELIMITADOR   ->> '[' | ']' | '{' | '}' | '(' | ')'
+                | '`' | "'" | '"' | '«' | '»' | '#'.
+

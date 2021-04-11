@@ -5,16 +5,22 @@ Uma linguagem para diálogo entre humanos e computadores.
 Criar e usar sistemas interativos de informação de modo simples e fléxivel.
 
 ## Requisitos
-* DEVE ser fácil de ler, escrever e compreender para pessoas com educação de ensino médio Brasileiro;
-* DEVE ser fácil de ler e compreender para pessoas com educação básica e auxílio de terceiros.
-* DEVE ser fácil de aprender e ensinar num curto espaço de tempo;
-* DEVE ser baseada em Português e ter uma sintaxe e semântica quase natural;
-* DEVE ser permitir criar, pesquisar, atualizar e apagar informações de modo simples e fléxivel;
-* DEVE permitir armazenar informações num formato textual legível para humanos;
-* DEVE ser fácil de instalar e configurar, o instalador NÃO DEVE depender de conexão de Internet, mas PODE utilizá-la se houver uma conexão;
-* DEVE ser bem definida e não-ambígua em termos computacionais;
-* PODE facilitar a integração de sistemas de informação e conhecimento existentes (através de API, bindings e protocolos);
-* PODE permitir a criação de interfaces gráficas para sistemas de informação.
+* **Humanos**:
+  * DEVE ser fácil de ler, escrever e compreender para pessoas com educação de ensino médio Brasileiro;
+  * DEVE ser fácil de ler e compreender para pessoas com educação básica e auxílio de terceiros.
+  * DEVE ser fácil de aprender e ensinar num curto espaço de tempo;
+  * DEVE ser baseada em Português e ter uma sintaxe e semântica quase natural;
+  * DEVE permitir criar, pesquisar, atualizar e apagar informações de modo simples e fléxivel;
+  * DEVE permitir armazenar informações num formato textual legível para humanos;
+  * DEVE ser fácil de instalar e configurar;
+* **Tecnológicos**
+  * DEVE ser bem definida e não-ambígua em termos computacionais;
+  * DEVE ter poucas dependências obrigatórias;
+  * NÃO DEVE deve depender de conexão de Internet para instalar, configurar e utilizar.
+  * DEVE suportar sistemas operativos *desktop* (Windows, GNU/Linux, Windows)
+  * PODE suportar sistemas operativos *mobile* e plataformas *web*;
+  * PODE criar interfaces gráficas para sistemas de informação.
+  * PODE integrar sistemas de informação externos (através de API, bindings e protocolos);
 
 ## Histórico
 Esta linguagem foi inspirada por experiências de ensino/aprendizado do [Projeto Quipá](https://www.facebook.com/projetoquipa/) durante a sua campanha *Ação no Sertão* de 2019 no Território Serra da Capivara, Piauí, Brasil. Durante esta campanha foram organizados cursos em colaboração com a [Cáritas Diocesana de São Raimundo Nonato](https://www.facebook.com/CaritasSRN/) junto com comunidades rurais, técnicos e profissionais de extensão e estudantes de ensino técnico da Escola Família Agrícola da Serra da Capivara.
@@ -120,15 +126,15 @@ A linguagem suportará os seguintes paradigmas:
 **NOTA: Em construção**
 
 ## Inspiração
-A linguagem é filosoficamente inspirada pela linguagem [Logo](http://pt.wikipedia.org/wiki/Logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert), [Wally Feurzeig](https://en.wikipedia.org/wiki/Wally_Feurzeig), [Cynthia Solomon](https://en.wikipedia.org/wiki/Cynthia_Solomon) e a linguagem [Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay), [Dan Ingalls](https://en.wikipedia.org/wiki/Dan_Ingalls) e [Adele Goldberg](https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)), ambas baseadas na filosofia do construcionismo.
+A linguagem é filosoficamente inspirada pela linguagem [Logo](#logo) (Dia*Logo*) concebida por [Seymour Papert](http://pt.wikipedia.org/wiki/Seymour_Papert), [Wally Feurzeig](https://en.wikipedia.org/wiki/Wally_Feurzeig), [Cynthia Solomon](https://en.wikipedia.org/wiki/Cynthia_Solomon) e a linguagem [Smalltalk](#smalltalk) (literalmente significa conversa fiada) concebida por [Alan Kay](http://pt.wikipedia.org/wiki/Alan_Kay), [Dan Ingalls](https://en.wikipedia.org/wiki/Dan_Ingalls) e [Adele Goldberg](https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)), ambas baseadas na filosofia do construcionismo.
 
 Ela é baseada em conceitos de linguística cognitiva:
 * [Construções](http://en.wikipedia.org/wiki/Construction_grammar), frases incompletas com padrões (*slots*) que podem ser preenchidos com palavras ou outras construções.
 * [Gramática categorial combinatória](https://pt.wikipedia.org/wiki/Gramática_categorial_combinatória) que associa a cada palavra um combinador que permite construir frases.
 
 Outras linguagens de programação que influenciam a proposta:
-* Logo
-* Smalltalk
+* <a name="logo"></a>[Logo](http://pt.wikipedia.org/wiki/Logo)
+* <a name="smalltalk"></a>[Smalltalk](http://pt.wikipedia.org/wiki/Smalltalk)
 * [Lisp](http://en.wikipedia.org/wiki/Lisp_(programming_language))/[Scheme](http://en.wikipedia.org/wiki/Scheme_(programming_language))
 * [Prolog](http://en.wikipedia.org/wiki/Prolog)
 * [Inform 7](http://inform7.com/)
@@ -137,230 +143,90 @@ Outras linguagens de programação que influenciam a proposta:
 * [HyperTalk](http://en.wikipedia.org/wiki/HyperTalk)
 * [Dylan](http://en.wikipedia.org/wiki/Dylan_(programming_language))
 * [Tcl](http://www.tcl.tk/)
-* [CGOL](http://en.wikipedia.org/wiki/CGOL)
+* <a name="cgol"></a>[CGOL](http://en.wikipedia.org/wiki/CGOL)
 * [Raku](https://www.raku.org/)
 * [Kernel](https://web.cs.wpi.edu/~jshutt/kernel.html)
 * [Go!](https://en.wikipedia.org/wiki/Go!_(programming_language)) (não confundir com [Go](golang.org/))
 
 ## Implementação
-Atualmente o projeto está a considerar utilizar a plataforma Java para implementação e suas diversas linguagens, devido a sua máquina virtual (JVM) e bibliotecas (APIs).
+Atualmente o projeto está a considerar utilizar a plataforma Java por os seguintes motivos:
+* Portabilidade: a máquina virtual (JVM) e bibliotecas Java (APIs) permitem desenvolver software multiplataforma com poucas dependências.
+* Flexibilidade: plataforma pode ser programa através de diversas linguagens (Java, Groovy, Kotlin, Scale, etc.).
 
-A primeira implementação será um interpretador de árvore baseado no algoritmo *Top Down Operator Precedence* desenvolvido por Vaughan Pratt desenvolvido nos anos 70 (e aplicado na linguagem CGOL.
+A primeira implementação será um interpretador composto das seguintes fases de análise:
 
-## <a name="gramatica"></a> Gramáticas
+* Morfológica : identifica os[morfemas](#gmorfologica);
+* Léxica      : identifica os [lexemas](#glexica);
+* Sintática   : identifica as estruturas sintáticas ([sintagmas](#gsintatica));
+* Semântica   : avalia o significado (sememas) associados a cada estrutura sintática.
 
-Seguem duas definições da gramática fixa da linguagem. Ambas devem ser interpretadas como gramáticas [GASE](https://pt.wikipedia.org/wiki/Gramática_de_análise_sintática_de_expressão) (*[PEG](https://en.wikipedia.org/wiki/Parsing_expression_grammar)*) com alternativas selecionadas da esquerda para a direita.
+As fases morfológica, léxica e sintática definem a gramática estática da linguagem, enquanto que a fase semântica definem a gramática dinâmica (construções e formatos).
 
-#### Gramática em Dialogo
+A análise semântica será baseada no algoritmo *Top Down Operator Precedence* (TDOP) associando ao identificador principal de cada construção e a cada formato uma precedência. Este algoritmo foi desenvolvido por Vaughan Pratt nos anos 70 e utilizado para implementar a linguagem de programação [CGOL](#cgol).
 
-A seguinte gramática usa a sintaxe da própria linguagem Dialogo.
+Teoricamente o interpretador poderia ser implementado por completo com este algoritmo, mas a sepração por fases facilitar a deteção de erros e desenvolvimento modular do interpretador.
 
-* `coisa`             não-terminal sintático ou léxico (identificador);
-* `COISA`             não-terminal morfológico (um identificador);
-* `coisa composta`    não-terminal sintático-léxico (identificador composto);
-* ``COISA COMPOSTA``  não terminal morfológico (identificador composto);
-* `'coisa'`           terminal (texto);
-* `"coisa"`           terminal (texto);
-* `(coisa1 coisa2)`   padrão;
-* `# coisa #`         comentário;
+## <a name="gramatica"></a>Gramática estática
 
-Assume-se que os seguintes operadores estão definidos
+Segue a gramática estática da linguagem em formato [EBNF](https://pt.wikipedia.org/wiki/Formalismo_de_Backus-Naur_Estendido). Ela está divida em três sub-gramáticas e um léxico.
 
-* `coisas ->> coisa.`   define uma regra gramatical (operador árvore);
-* `coisa1 | coisa2`     regras alternativas;
-* `coisa1 - coisa`      excepção à regra;
-* `(* coisa)`           padrão para zero ou mais `coisa`s;
-* `(+ coisa)`           umpadrão para uma ou mais `coisa`s;
-* `(~ coisa)`           padrão opcional para uma `coisa`.
+As sub-gramáticas devem ser interpretada como gramáticas [GASE](https://pt.wikipedia.org/wiki/Gramática_de_análise_sintática_de_expressão) (*[PEG](https://en.wikipedia.org/wiki/Parsing_expression_grammar)*), com alternativas `|` selecionadas da esquerda para a direita. 
 
-Precedência dos operadores.
-`-` > `|` > `*` `+` `~` > `->>`
+O léxico deve ser interpretado como uma gramática [GLC](https://pt.wikipedia.org/wiki/Gramática_livre_de_contexto) (CFG), na qual cada palavra é associada com todos os significados possíveis ().
 
-```dialogo
-###################
-Gramática Sintática
-###################
+**NOTA: carateres latinos não são utilizados nos não-terminais da gramática porque o realce de sintaxe do Github não os reconhece.**
 
-documento     ->> parágrafo (~ espaços).
-parágrafo     ->> frase (* espaços frase).
-
-frase         ->> declaração | interrogação | exclamação.
-declaração    ->> período '.'.
-interrogação  ->> período '?'.
-exclamação    ->> período '!'.
-
-período       ->> procedimento | macro | oração.
-
-procedimento  ->> função | comando | regra | tipo.
-função        ->> 'função'  (~ oração) bloco.
-comando       ->> 'comando' (~ oração) bloco.
-regra         ->> 'regra'   oração bloco.
-tipo          ->> 'tipo' (~ identificador) bloco.
-
-macro         ->> 'macro ' procedimento.
-oração        ->> (~ espaços) termo (* espaços termo).
-
-termo         ->> item | grupo | lista.
-
-item          ->> literal | variável | chave | `variável chave`
-                | identificador | misto | comentário.
-
-literal       ->> nulo | booleano | número | texto.
-
-grupo         ->> expressão | bloco | padrão.
-expressão     ->> '[' (período | parágrafo) (~ espaços) ']'.
-bloco         ->> '{' (período | parágrafo) (~ espaços) '}'.
-padrão        ->> '(' período (~ espaços) ')'.
-
-lista         ->> (item - chave | grupo)
-                  (+ ';' espaços (item - chave | grupo)).
-
-#################
-Gramática Lexical
-#################
-
-espaços       ->> (+ ESPAÇO).
-
-nulo          ->> 'nulo'.
-
-booleano      ->> 'verdadeiro' | 'falso'.
-
-número        ->> real | fracional | inteiro.
-real          ->> ('-' | '+') NÚMERO ',' NÚMERO.
-racional      ->> ('-' | '+') NÚMERO '/' NÚMERO.
-inteiro       ->> decimal | binário | octal | hexadecimal.
-decimal       ->> ('-' | '+') NÚMERO.
-binário       ->> '0b' NÚMERO.
-octal         ->> '0o' NÚMERO.
-hexadecimal   ->> '0x' NÚMERO.
-
-texto         ->> TEXTO.
-
-variável          ->> ':' IDENTIFICADOR.
-chave             ->>     IDENTIFICADOR ':'.
-`variável chave`  ->> ':' IDENTIFICADOR ':'.
-
-identificador ->> IDENTIFICADOR (* ':' (IDENTIFICADOR | LITERAL | MISTO)).
-
-misto         ->> MISTO.
-
-comentário    ->> COMENTÁRIO.
-
-#####################
-Gramática Morfológica
-#####################
-
-IDENTIFICADOR ->> RESERVADO | PALAVRA | OPERADOR | COMPOSTO.
-
-RESERVADO     ->> 'macro' | 'função' | 'comando' | 'regra' | 'tipo'
-                | 'nulo' | 'verdadeiro' | 'falso' | LÉXICO.
-PALAVRA       ->> (+ LETRA).
-OPERADOR      ->> (+ SÍMBOLO).
-COMPOSTO      ->> '`' (+  CORINGA - '`' | '\`') '`'.
-
-LITERAL       ->> NÚMERO | TEXTO.
-
-NÚMERO        ->> (+ DÍGITO).
-
-TEXTO         ->> "'" (* CORINGA - "'" | "\'") "'
-                | '"' (* CORINGA - '"' | '\"') '"'
-                | '«' (* CORINGA - '»' | '\»') '»' ;
-
-MISTO         ->> CARATERE (* CARATERE | SINAL - ':') CARATERE.
-
-COMENTÁRIO    ->> (+ '#') (+ CORINGA - '#' | '\#') (+ '#').
-
-LÉXICO        ->> `VERBO DE LIGAÇÃO` | ADVÉRBIO | DETERMINANTE | PRONOME
-                | QUANTIFICADOR | PREPOSIÇÃO | CONJUNÇÃO | CONTRAÇÃO.
-
-#########
-Carateres
-#########
-
-CORINGA   ->> ESPAÇO | CARATERE | SINAL.
-
-ESPAÇO    ->> ' ' | '\n' | '\t'.
-
-CARATERE  ->> LETRA | DÍGITO | SÍMBOLO.
-SINAL     ->> PONTO | DELIMITADOR.
-
-LETRA     ->> 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k'
-            | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v'
-            | 'w' | 'x' | 'y' | 'z' |
-            | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K'
-            | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V'
-            | 'W' | 'X' | 'Y' | 'Z'
-            | 'ç' | 'Ç'
-            | 'ã' | 'õ'
-            | 'á' | 'é' | 'í' | 'ó' | 'ú'
-            | 'à' | 'è' | 'ì' | 'ò' | 'ù'
-            | 'â' | 'ê' | 'ô'
-            | 'Ã' | 'Õ'
-            | 'Á' | 'É' | 'Í' | 'Ó' | 'Ú'
-            | 'À' | 'È' | 'Ì' | 'Ò' | 'Ù'
-            | 'Â' | 'Ê' | 'Ô'.
-
-DÍGITO    ->> '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'.
-SÍMBOLO   ->> '+' | '-' | '*' | '/' | '=' | '<' | '>' | '%' | '|' | '&'
-            | '$' | '@' | '\' | '_' | '~' | '^'.
-
-PONTO         ->> '.' | '?' | '!' | ':' | ';' | ','.
-DELIMITADOR   ->> '[' | ']' | '{' | '}' | '(' | ')'
-                | '`' | "'" | '"' | '«' | '»' | '#'.
-
-```
-
-### Gramática EBNF
-
-Gramática em formato [EBNF](https://pt.wikipedia.org/wiki/Formalismo_de_Backus-Naur_Estendido), mas deve ser interpretada como uma gramática PEG, com as primeiras regras tendo precedência às segundas.
-
-**NOTA: Realce de sintaxe do Github não reconhece carateres latinos por isso não são usados acentos ou cedilhas nesta gramática**
+### <a name="gsintatica"></a>Sub-gramática sintática
 
 ```EBNF
-(*******************
- Gramatica Sintatica
- *******************)
 
-documento     = paragrafo , [ espacos ] ;
-paragrafo     = frase , { espacos , frase } ;
+documento       = paragrafo , [ espacos ] ;
+paragrafo       = frase , { espacos , frase } ;
 
-frase         = declaracao | interrogacao | exclamacao ;
-declaracao    = periodo , '.' ;
-interrogacao  = periodo , '?' ;
-exclamacao    = periodo , '!' ;
+frase           = declaracao | interrogacao | exclamacao ;
+declaracao      = periodo , '.' ;
+interrogacao    = periodo , '?' ;
+exclamacao      = periodo , '!' ;
 
-periodo       = procedimento | macro | oracao ;
+periodo         = procedimento | macro | oracao ;
 
-procedimento  = funcao | comando | regra | tipo ;
-funcao        = 'função'  , [ oracao ] , bloco ;
-comando       = 'comando' , [ oracao ] , bloco ;
-regra         = 'regra'   , oracao , bloco ;
-tipo          = 'tipo' , [ identificador ] , bloco ;
+procedimento    = funcao | comando | regra | tipo ;
+funcao          = 'função'  , [ oracao ] , bloco ;
+comando         = 'comando' , [ oracao ] , bloco ;
+regra           = 'regra'   , oracao , bloco ;
+tipo            = 'tipo' , [ identificador ] , bloco ;
 
-macro         = 'macro ' , procedimento ;
+macro           = 'macro ' , procedimento ;
 
-oracao        = [ espacos ] , termo , { espacos , termo } ;
+oracao          = [ espacos ] , termo , { espacos , termo } ;
 
-termo         = item | grupo | lista ;
+termo           = item | grupo | lista ;
 
-item          = literal | variavel | chave | variavel chave | identificador
-              | misto | comentario ;
+item            = literal | variavel chave | variavel | chave | identificador
+                | comentario | misto ;
 
-literal       = nulo | booleano | numero | texto ;
+literal         = nulo | booleano | numero | texto ;
 
+variavel chave  = ':' , identificador - reservado , ':' ;
+                | ':' , grupo , variavel chave ;
+variavel        = ':' , identificador - reservado
+                | ':' , grupo , variavel ;
 
-grupo         = expressao | bloco | padrao ;
-expressao     = '[' , ( periodo | paragrafo ) , [ espacos ] , ']'.
-bloco         = '{' , ( periodo | paragrafo ) , [ espacos ] , '}'.
-padrao        = '(' , periodo , [ espacos ] , ')'.
+grupo           = expressao | bloco | padrao ;
+expressao       = '[' , ( periodo | paragrafo ) , [ espacos ] , ']' ;
+bloco           = '{' , ( periodo | paragrafo ) , [ espacos ] , '}' ;
+padrao          = '(' , periodo , [ espacos ] , ')' l
 
-lista         = ( item - chave | grupo ) ,
-                ( ';' , espacos , ( item - chave | grupo ) ) ,
-                { ';' , espacos , ( item - chave | grupo } ;
+lista           = ( item - chave | grupo )
+                , ( ';' , espacos , ( item - chave | grupo ) )
+                , { ';' , espacos , ( item - chave | grupo } ;
+```
 
-(*****************
- Gramatica Lexical
- *****************)
+### <a name="glexica"></a>Sub-gramática léxica
+
+```EBNF
+lexema        = espacos | nulo | booleano | numero | texto | identificador
+              | operador | reservado | comentario | misto ; 
 
 espacos       = ESPACO , { ESPACO } ;
 
@@ -368,38 +234,36 @@ nulo          = 'nulo' ;
 
 booleano      = 'verdadeiro' | 'falso' ;
 
-numero        = real | fracional | inteiro.
+numero        = real | fracional | inteiro ;
 real          = ('-' | '+') , NUMERO , ',' , NUMERO ;
 racional      = ('-' | '+') , NUMERO , '/' , NUMERO ;
 inteiro       = decimal | binario | octal | hexadecimal ;
-decimal       = ('-' | '+') , NUMERO.
+decimal       = ('-' | '+') , NUMERO ;
 binario       = '0b' , NUMERO ;
 octal         = '0o' , NUMERO ;
 hexadecimal   = '0x' , NUMERO ;
 
 texto         = TEXTO ;
 
-variavel        = ':' , IDENTIFICADOR ;
-chave           =     , IDENTIFICADOR , ':' ;
-variavel chave  = ':' , IDENTIFICADOR , ':' ;
+chave         = identificador , ':' ;
 
-identificador = IDENTIFICADOR , { ':' , ( IDENTIFICADOR | LITERAL | MISTO ) } ;
+identificador = reservado | operador | PALAVRA | COMPOSTO
+              | identificador , { ':' , misto | LITERAL | identificador } ;
+
+operador      = SIMBOLO , { SIMBOLO } ;
+
+reservado     = 'macro' | 'função' | 'comando' | 'regra' | 'tipo' | 'nulo'
+              | 'verdadeiro' | 'falso' | lexico ;
 
 comentario    = COMENTARIO ;
 
-misto         = MISTO ;
+misto         = CARATERE , { CARATERE | SINAL  - ':' } , CARATERE ;
+```
 
-(*********************
- Gramatica Morfologica
- *********************)
+### <a name="gmorfologica"></a>Sub-gramática morfológica
 
-IDENTIFICADOR = RESERVADO | PALAVRA | OPERADOR | COMPOSTO.
-
-RESERVADO     = 'macro' | 'função' | 'comando' | 'regra' | 'tipo'
-              | 'nulo' | 'verdadeiro' | 'falso' | LEXICO ;
-PALAVRA       = LETRA , { LETRA } ;
-OPERADOR      = SIMBOLO , { SIMBOLO } ;
-COMPOSTO      = '`' , CORINGA { CORINGA - '`' | '\`' } , '`' ;
+```EBNF
+MORFEMA       = LITERAL | PALAVRA | COMPOSTO | COMENTARIO
 
 LITERAL       = NUMERO | TEXTO ;
 
@@ -409,22 +273,357 @@ TEXTO         = "'" , { CORINGA - "'" | "\'" } , '"'
               | '"' , { CORINGA - '"' | '\"' } , '"'
               | '«' , { CORINGA - '»' | '\»' } , '»' ;
 
-MISTO         = CARATERE , { CARATERE | SINAL  - ':' } , CARATERE ;
+PALAVRA       = LETRA , { LETRA } ;
+COMPOSTO      = '`' , CORINGA { CORINGA - '`' | '\`' } , '`' ;
 
-COMENTARIO    = '#' , { '#' } , ( CORINGA - '#' | '\#' ) ,
-                { CORINGA - '#' | '\#' } , '#' , { '#' } ;
+COMENTARIO    = '#' , { '#' } , ESPACO , { (CORINGA - '#' | '\#') , ESPACO }
+              , '#' , { '#' } ;
 
-LEXICO        = VERBO DE LIGACAO | ADVERBIO | DETERMINANTE | PRONOME
-              | QUANTIFICADOR | PREPOSICAO | CONJUNCAO | CONTRACAO.
+CORINGA   = ESPACO | CARATERE | SINAL ;
 
+ESPACO    = ' ' | '\n' | '\t' ;
 
-(***********************************
- Carateres
+CARATERE  = LETRA | DIGITO | SIMBOLO ;
 
- Ver seccoes na gramatica em dialogo
- ***********************************)
+LETRA     = 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k'
+          | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v'
+          | 'w' | 'x' | 'y' | 'z' |
+          | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K'
+          | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V'
+          | 'W' | 'X' | 'Y' | 'Z'
+          | 'ç' | 'Ç'
+          | 'ã' | 'õ'
+          | 'á' | 'é' | 'í' | 'ó' | 'ú'
+          | 'à' | 'è' | 'ì' | 'ò' | 'ù'
+          | 'â' | 'ê' | 'ô'
+          | 'Ã' | 'Õ'
+          | 'Á' | 'É' | 'Í' | 'Ó' | 'Ú'
+          | 'À' | 'È' | 'Ì' | 'Ò' | 'Ù'
+          | 'Â' | 'Ê' | 'Ô' ;
+DIGITO    = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
+SIMBOLO   = '+' | '-' | '*' | '/' | '=' | '<' | '>' | '%' | '|' | '&'
+          | '$' | '@' | '\' | '_' | '~' | '^' ;
 
-
-
+SINAL       = PONTO | DELIMITADOR ;
+PONTO       = '.' | '?' | '!' | ':' | ';' | ',' ;
+DELIMITADOR = '[' | ']' | '{' | '}' | '(' | ')' ;
+            | '`' | "'" | '"' | '«' | '»' | '#' ;
 ```
 
+### <a name="lexico"></a>Léxico de palavras reservadas
+
+As seguintes palavras são reservadas e não podem ser redefinidas, mas podem ser utilizadas como identificadores, chaves (`de:`) ou palavras compostas (`como`, 1a pess. do sing. pres. indi. de *comer*).
+
+* adj.    : adjetivo;
+* adv.    : advérbio;
+* art.    : artigo;
+* conj.   : conjunção;
+* det.    : determinante;
+* prep.   : preposição;
+* pron.   : pronome;
+* quant.  : quantificador;
+* v.      : verbo;
+* n. m.   : nome masculino;
+* n. f.   : nome feminindo;
+
+Palavras ambíguas tem várias construções associadas, cada associada a um significado.
+
+Observações:
+* Lista tenta ser exaustiva para palavras de classe fechada (determinantes, pronomes, quantificador, preposições, conjunções, contrações), e indicativa para palavras de classe aberta (adjetivos e advérbios).
+* Consideram-se somente preposições essenciais aquelas que não tenham mais nenhum significado por si só (excluindo algumas preposições geralmente consideradas essenciais).
+* Palavras seguem a ortografia brasileira (pt-BR).
+* As palavras estão em caixa baixa, mas podem também ser escritas em caixa alta. 
+* São excluídas:
+  * Formas atónicas dos pronomes pessoais
+  * Conjunções correlativas
+  * Lista não inclui locuções adverbiais, prepositivas, conjuncionais (por agora)
+
+**NOTA: em construção**
+
+Quanto à categoria da palavra:
+
+```EBNF
+
+lexico    = classe aberta | classe fechada ;
+
+classe aberta    = verbo | adjetivo | adverbio ;
+
+verbo     = ser | estar | ter ;
+
+ser       = 'é' | 'são'
+
+estar     = 'está'  | 'estão' 
+
+ter       = 'tem' ;
+
+adjetivo  = adjetivo comparativo | adjetivo superlativo
+
+adjetivo normal       = 'boa' | 'boas'  | 'bom' | 'bons'
+                      | 'má'  | 'más'   | 'mau' | 'maus'
+                      | 'grande'  | 'grandes'
+                      | 'pequena' | 'pequenas'  | 'pequeno' | 'pequenos' ;
+
+adjetivo comparativo  = 'melhor'  | 'melhores'
+                      | 'pior'    | 'piores'
+                      | 'menor'   | 'menores'
+                      | 'maior'   | 'maiores' ;
+
+adjetivo superlativo  = 'ótima'   | 'ótimas'  | 'ótimo'   | 'ótimos'
+                      | 'péssima' | 'péssimas'| 'péssimo' | 'péssimos'
+                      | 'máxima'  | 'máximas' | 'máximo'  | 'máximos'
+                      | 'mínima'  | 'mínimas' | 'mínimo'  | 'mínimos' ;
+
+adverbio  = adverbio de predicado
+          | adverbio de afirmacao
+          | adverbio de negacao
+          | adverbio de interogacao
+          | adverbio de quantidade
+          | adverbio de intensidade
+          | adverbio de duvida
+          | adverbio de demonstracao
+          | adverbio de inclusao e exclusao 
+          | 'que' | 'mas' | 'embora' | 'pois' ;
+
+adverbio de predicado = adverbio de tempo
+                      | adverbio de lugar
+                      | adverbio de modo ;
+
+adverbio de afirmacao   = 'sim' | 'certo' ;
+adverbio de negacao     = 'não' | 'nem' | 'nunca' | 'jamais' ;
+adverbio de interogacao = 'como' | 'onde' | 'quando' | 'porque'
+adverbio de tempo       = 'ainda'
+                        | 'afinal'
+                        | 'anteontem'| 'ontem'  | 'hoje' | 'amanhã'
+                        | 'antes'    | 'agora'  | 'após' | 'depois' 
+                        | 'breve'
+                        | 'cedo'  | 'tarde'
+                        | 'enfim' | 'então'
+                        | 'já' | 'logo' 
+                        | 'nunca' | 'jamais' | 'sempre'
+                        | 'outrora'
+                        | 'quando' ;
+adverbio de lugar       = 'abaixo'  | 'acima' | 'debaixo' | 'embaixo'
+                        | 'adiante' | 'diante' | 'afora'
+                        | 'algures'
+                        | 'aqui' | 'aí' | 'ali' | 'acolá' | lá'
+                        | 'além' | 'aquém'
+                        | 'atrás'   | 'através'
+                        | 'antes' | 'depois'
+                        | 'cá'
+                        | 'detrás'
+                        | 'defronte'
+                        | 'dentro'  | 'fora'
+                        | 'junto'
+                        | 'longe' | 'perto' 
+                        | 'onde' ;
+adverbio de quantidade  = adverbio de intensidade ;
+adverbio de intensidade = 'apenas'
+                        | 'bastante' | 'bem'
+                        | 'demais'  | 'demasiado'
+                        | 'mais'    | 'menos'
+                        | 'muito' | 'pouco'
+                        | 'tudo'  | 'nada'
+                        | 'quão'  | 'quanto'  | 'quase'
+                        | 'tão'   | tanto' ;
+adverbio de modo        = 'assim'
+                        | 'bem' | 'mal'
+                        | 'melhor' | 'pior'
+                        | 'como'
+                        | 'contra'
+                        | 'debalde' | 'depressa' | 'devagar'
+                        | 'sobretudo' | 'também' ;
+adverbio de duvida      = 'acaso' | 'porventura' | 'quiçá' | 'talvez' ;
+adverbio de inclusao
+          e exclusao = 'apenas' | 'até'
+                     | 'exclusive' | 'inclusive'
+                     | 'exceto'
+                     | 'fora'
+                     | 'menos'
+                     | 'sequer' | 'só' | 'somente'
+                     | 'também' ;
+adverbio de demonstracao  = 'eis' ;
+
+classe fechada  = determinante | pronome | preposicao | conjuncao | contracao ;
+
+determinante      = determinante artigo
+                  | determinante demonstrativo
+                  | determinante possesivo
+                  | determinante indefinido
+                  | determinante relativo
+                  | determinante interrogativo ;
+
+determinante artigo = artigo definido | artigo indefinido ;
+artigo definido     = 'a' | 'as' | 'o' | 'os' ;
+artigo indefinido   = 'uma' | 'umas'  | 'um'  | 'uns' ;
+
+determinante demonstrativo = 'esta'   | 'estas    | 'este'   | 'estes'
+                           | 'essa'   | 'essas'   | 'esse'   | 'esses'
+                           | 'aquela' | 'aquelas' | 'aquele' | 'aqueles' ;
+
+determinante possesivo  = 'minha' | 'minhas' | 'meu'   | 'meus'
+                        | 'tua'   | 'tuas'   | 'teu'   | 'teus'
+                        | 'sua'   | 'suas'   | 'seu'   | 'seus'
+                        | 'nossa' | 'nossas' | 'nosso' | 'nossos'
+                        | 'vossa' | 'vossas' | 'vosso' | 'vossos' ;
+
+determinante indefinido = 'certa' | 'certas'  | 'certo' | 'certos'
+                        | 'outra' | 'outras'  | 'outro' | 'outros' ;
+                          
+determinante relativo   = 'cujo' | 'cuja' | 'cujos' | 'cujas' ;
+
+determinante interrogativao = 'que' | 'qual'  | 'quais' ;
+
+pronome = pronome pessoal
+        | pronome demonstrativo
+        | pronome possesivo
+        | pronome indefinido
+        | pronome relativo
+        | pronome interrogativo ;
+
+pronome pessoal = 'eu'  | 'tu'  | 'ela' | 'ele' | 'nós' | 'elas' | 'eles'
+                | 'mim' | 'ti'  | 'si'
+                | 'a' | 'as' | 'o' | 'os'
+                | 'comigo'  | 'contigo' | 'consigo' | 'conosco' | 'convosco' ;
+
+pronome demonstrativo = 'esta'  | 'estas    | 'este'  | 'estes'
+                      | 'essa'  | 'essas'   | 'esse'  | 'esses'
+                      | 'aquela'| 'aquelas' | 'aquele'| 'aqueles' ;
+
+pronome possesivo     = 'minha' | 'minhas'  | 'meu'   | 'meus'
+                      | 'tua'   | 'tuas'    | 'teu'   | 'teus'
+                      | 'sua'   | 'suas'    | 'seu'   | 'seus'
+                      | 'nossa' | 'nossas'  | 'nosso' | 'nossos'
+                      | 'vossa' | 'vossas'  | 'vosso' | 'vossos' ;
+
+pronome indefinido    = 'certa' | 'certas'  | 'certo' | 'certos'
+                      | 'outra' | 'outras'  | 'outro' | 'outros' ;
+                          
+pronome relativo      = 'cuja'  | 'cujas'   | 'cujo'  | 'cujas'
+
+pronome interrogativo = 'que' | 'qual' | 'quais'
+
+quantificador = quantificador universal
+              | quantificador existencial
+              | quantificador numeral
+              | quantificador interrogativo
+              | quantificador relativo ;
+
+quantificador universal   = 'toda'    | 'todas'   | 'todo'    | 'todos'
+                          | 'nenhuma' | 'nenhumas | 'nenhum'  | 'nenhuns'
+                          | 'ambos'   | 'cada'    | 'qualquer' ;
+
+quantificador existencial = 'alguma'  | 'algumas' | 'algum'   | 'alguns'
+                          | 'algo'    | 'alguém' ;
+
+(* por concluir *)
+quantificador numeral = ;
+quantificador interrogativo = ;
+quantificador relativo      = ;
+
+quantificador = 'quanto'  | 'Quanto' ;
+
+preposicao  = preposicao essencial | presposicao acidental ;
+preposicao essencial  = 'ante'
+                      | 'com'   
+                      | 'de'    | 'desde'
+                      | 'em'    | 'entre'   | 
+                      | 'para'  | 'perante'
+                      | 'sem'   | 'sob'
+                      | 'trás' ;
+preposicao acidental  = 'a'     | 'após'      | 'até'
+                      | 'como'  | 'conforme'  | 'contra'
+                      | 'durante'
+                      | 'exceto'
+                      | 'fora'
+                      | 'mais'
+                      | 'menos'
+                      | 'por'
+                      | 'que'
+                      | 'salvo'
+                      | 'senão'
+                      | 'sobre'
+                      | 'mediante' ;
+                    
+conjuncao = conjuncao coordenativa
+          | conjuncao subordinativa
+
+conjuncao coordenativa  = conjuncao copulativa
+                        | conjuncao disjuntiva
+                        | conjuncao conclusiva
+                        | conjuncao adversativa
+                        | conjuncao explicativa ;
+
+conjuncao copulativa  = 'e' | 'nem' | 'também' ;
+conjuncao disjuntiva  = 'ou' ;
+conjuncao conclusiva  = 'assim' | 'logo'| 'pois' | 'portanto' ;
+conjuncao adversativa = 'contudo' | 'mas' | 'porém' | 'todavia' ;
+conjuncao explicativa = 'pois' | 'porquanto' | 'porque' | 'que' ;
+
+conjuncao subordinativa = conjuncao completiva
+                        | conjuncao causal
+                        | conjuncao final
+                        | conjuncao temporal
+                        | conjuncao concessiva
+                        | conjuncao condicional
+                        | conjuncao comparativa
+                        | conjuncao consecutiva ;
+
+conjuncao completiva    = 'que' ;
+conjuncao causal        = 'como' | 'pois' | 'porquanto' | 'porque' | 'que' ;
+conjuncao final         = 'que' ;
+conjuncao temporal      = 'apenas' | 'mal' | 'quanto' | 'enquanto' ;
+conjuncao concessiva    = 'conquanto' | 'embora' | 'que' ;
+conjuncao condicional   = 'se' | 'senão' | 'caso' ;
+conjuncao comparativa   = 'como' | 'conforme' ;
+conjuncao consecutiva   = 'que' ; (* quando *)
+
+contracao =
+          (*  a + art.  *)
+          | 'à'   | 'às'  | 'ao   | 'aos'
+          (*  a + pron. dem.  *)
+          | 'àquela' | 'àquelas'| 'àquele' | 'àqueles'
+          (*  a + adv.  *)
+          | 'aonde' | 'Aonde'
+          (*  de + art. *)
+          | 'da'    | 'das'   | 'do'  | 'dos'
+          | 'duma'  | 'dumas' | 'dum' | 'duns'
+          (*  de + pron. pess. *)
+          | 'dela'    | 'delas'   | 'dele'    | 'deles'
+          (*  de + pron. dem.  *)
+          | 'desta'   | 'destas'  | 'deste'   | 'destes'
+          | 'dessa'   | 'dessas'  | 'desse'   | 'desses'
+          | 'daquela' | 'daquelas'| 'daquele' | 'daqueles'
+          | 'daquilo'
+          | 'Daquilo'
+          (*  de + pron. indef. *)
+          | 'doutra'  | 'doutras' | 'doutro'  | 'doutros'
+          (*  de + adv. ou de + prep. *)
+          | 'daqui' | 'daí' | 'dali' | 'daquém' | 'dalém' | 'dentre'
+          | 'dantes' | 'dacolá' | 'donde'
+          (*  em + art. *)
+          | 'na'  | 'nas' | 'no'  | 'nos'
+          | 'numa'  | 'numas' | 'num'   | 'nuns'
+          (*  em + pron. pess. *)
+          | 'nela'    | 'nelas'   | 'nele'    | 'neles'
+          (*  em + pron. dem.  *)
+          | 'neste'   | 'nesta'   | 'nestes'  | 'nestas
+          | 'nesse'   | 'nessa'   | 'nesses'  | 'nessas'
+          | 'naquele' | 'naquela' | 'naqueles'| 'naquelas'
+          | 'naquilo'
+          (*  em + pron. indef. *)
+          | 'noutro'  | 'noutra'  | 'noutros' | 'noutras'
+          (*  por + pron. pess.  *)
+          | 'pelo'    | 'pela'    | 'pelos'   | 'pelas'
+          ;
+
+diversa   = 'como'  (* verb.       *)
+          | 'qual'  (* conj. *)
+          | 'quais' (* conj. *)
+          | 'se'            (* pron.    *)
+          | 'caso'          (* n.m, v.  *)
+          | 'exceto'       (* adj., adv.   *)
+          | 'mediante'      (* adj. *)
+          | 'conforme'      (* adj. 2 g. | adv. | conj. | prep. *)
+          | 'consoante'     (* adj. 2 g. | n. f. | prep. *)
+          | ? a ser definidos num arquivo separado ? ;
+```
