@@ -435,7 +435,7 @@ adverbio de intensidade = 'apenas'
                         | 'muito' | 'pouco'
                         | 'tudo'  | 'nada'
                         | 'quão'  | 'quanto'  | 'quase'
-                        | 'tão'   | tanto' ;
+                        | 'tão'   | 'tanto' ;
 adverbio de modo        = 'assim'
                         | 'bem' | 'mal'
                         | 'melhor' | 'pior'
@@ -496,7 +496,7 @@ pronome pessoal = 'eu'  | 'tu'  | 'ela' | 'ele' | 'nós' | 'elas' | 'eles'
                 | 'a' | 'as' | 'o' | 'os'
                 | 'comigo'  | 'contigo' | 'consigo' | 'conosco' | 'convosco' ;
 
-pronome demonstrativo = 'esta'  | 'estas    | 'este'  | 'estes'
+pronome demonstrativo = 'esta'  | 'estas'   | 'este'  | 'estes'
                       | 'essa'  | 'essas'   | 'esse'  | 'esses'
                       | 'aquela'| 'aquelas' | 'aquele'| 'aqueles' ;
 
