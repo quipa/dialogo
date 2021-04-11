@@ -401,7 +401,7 @@ adverbio de predicado = adverbio de tempo
 
 adverbio de afirmacao   = 'sim' | 'certo' ;
 adverbio de negacao     = 'não' | 'nem' | 'nunca' | 'jamais' ;
-adverbio de interogacao = 'como' | 'onde' | 'quando' | 'porque'
+adverbio de interogacao = 'como' | 'onde' | 'quando' | 'porque' ;
 adverbio de tempo       = 'ainda'
                         | 'afinal'
                         | 'anteontem'| 'ontem'  | 'hoje' | 'amanhã'
@@ -509,7 +509,7 @@ pronome possesivo     = 'minha' | 'minhas'  | 'meu'   | 'meus'
 pronome indefinido    = 'certa' | 'certas'  | 'certo' | 'certos'
                       | 'outra' | 'outras'  | 'outro' | 'outros' ;
                           
-pronome relativo      = 'cuja'  | 'cujas'   | 'cujo'  | 'cujas'
+pronome relativo      = 'cuja'  | 'cujas'   | 'cujo'  | 'cujas' ;
 
 pronome interrogativo = 'que' | 'qual' | 'quais'
 
@@ -554,7 +554,7 @@ preposicao acidental  = 'a'     | 'após'      | 'até'
                       | 'mediante' ;
                     
 conjuncao = conjuncao coordenativa
-          | conjuncao subordinativa
+          | conjuncao subordinativa ;
 
 conjuncao coordenativa  = conjuncao copulativa
                         | conjuncao disjuntiva
