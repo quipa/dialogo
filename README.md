@@ -588,7 +588,7 @@ conjuncao consecutiva   = 'que' ; (* quando *)
 
 contracao =
           (*  a + art.  *)
-          | 'à'   | 'às'  | 'ao   | 'aos'
+          | 'à'   | 'às'  | 'ao'  | 'aos'
           (*  a + pron. dem.  *)
           | 'àquela' | 'àquelas'| 'àquele' | 'àqueles'
           (*  a + adv.  *)
@@ -615,7 +615,7 @@ contracao =
           (*  em + pron. pess. *)
           | 'nela'    | 'nelas'   | 'nele'    | 'neles'
           (*  em + pron. dem.  *)
-          | 'neste'   | 'nesta'   | 'nestes'  | 'nestas
+          | 'neste'   | 'nesta'   | 'nestes'  | 'nestas'
           | 'nesse'   | 'nessa'   | 'nesses'  | 'nessas'
           | 'naquele' | 'naquela' | 'naqueles'| 'naquelas'
           | 'naquilo'
