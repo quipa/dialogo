@@ -367,7 +367,7 @@ estar     = 'está'  | 'estão'
 
 ter       = 'tem' ;
 
-adjetivo  = adjetivo comparativo | adjetivo superlativo
+adjetivo  = adjetivo comparativo | adjetivo superlativo ;
 
 adjetivo normal       = 'boa' | 'boas'  | 'bom' | 'bons'
                       | 'má'  | 'más'   | 'mau' | 'maus'
@@ -416,7 +416,7 @@ adverbio de tempo       = 'ainda'
 adverbio de lugar       = 'abaixo'  | 'acima' | 'debaixo' | 'embaixo'
                         | 'adiante' | 'diante' | 'afora'
                         | 'algures'
-                        | 'aqui' | 'aí' | 'ali' | 'acolá' | lá'
+                        | 'aqui' | 'aí' | 'ali' | 'acolá' | 'lá'
                         | 'além' | 'aquém'
                         | 'atrás'   | 'através'
                         | 'antes' | 'depois'
@@ -467,7 +467,7 @@ determinante artigo = artigo definido | artigo indefinido ;
 artigo definido     = 'a' | 'as' | 'o' | 'os' ;
 artigo indefinido   = 'uma' | 'umas'  | 'um'  | 'uns' ;
 
-determinante demonstrativo = 'esta'   | 'estas    | 'este'   | 'estes'
+determinante demonstrativo = 'esta'   | 'estas'   | 'este'   | 'estes'
                            | 'essa'   | 'essas'   | 'esse'   | 'esses'
                            | 'aquela' | 'aquelas' | 'aquele' | 'aqueles' ;
 
@@ -520,7 +520,7 @@ quantificador = quantificador universal
               | quantificador relativo ;
 
 quantificador universal   = 'toda'    | 'todas'   | 'todo'    | 'todos'
-                          | 'nenhuma' | 'nenhumas | 'nenhum'  | 'nenhuns'
+                          | 'nenhuma' | 'nenhumas'| 'nenhum'  | 'nenhuns'
                           | 'ambos'   | 'cada'    | 'qualquer' ;
 
 quantificador existencial = 'alguma'  | 'algumas' | 'algum'   | 'alguns'
@@ -528,10 +528,8 @@ quantificador existencial = 'alguma'  | 'algumas' | 'algum'   | 'alguns'
 
 (* por concluir *)
 quantificador numeral = ;
-quantificador interrogativo = ;
+quantificador interrogativo = 'quanto' ;
 quantificador relativo      = ;
-
-quantificador = 'quanto'  | 'Quanto' ;
 
 preposicao  = preposicao essencial | presposicao acidental ;
 preposicao essencial  = 'ante'
