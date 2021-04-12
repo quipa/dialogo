@@ -314,28 +314,17 @@ DELIMITADOR = '[' | ']' | '{' | '}' | '(' | ')'
 
 As seguintes palavras são reservadas e não podem ser redefinidas, mas podem ser utilizadas como identificadores, chaves (`de:`) ou palavras compostas (`como`, 1a pess. do sing. pres. indi. de *comer*).
 
-adj.
-: adjetivo  
-adv.
-: advérbio  
-art.
-: artigo  
-conj.
-: conjunção  
-det.
-: determinante  
-prep.
-: preposição  
-pron.
-: pronome  
-quant.
-: quantificador  
-v.
-: verbo  
-n. m.
-: nome masculino  
-n. f.
-: nome feminindo
+  adj. : adjetivo  
+  adv. : advérbio  
+  art. : artigo  
+ conj. : conjunção  
+  det. : determinante  
+ prep. : preposição  
+ pron. : pronome  
+quant. : quantificador  
+    v. : verbo  
+ n. m. : nome masculino  
+ n. f. : nome feminindo
 
 Palavras ambíguas tem várias construções associadas, cada associada a um significado.
 
@@ -347,6 +336,7 @@ Observações:
 * São excluídas:
   * Formas atónicas dos pronomes pessoais
   * Conjunções correlativas
+  * Interjeições
   * Lista não inclui locuções adverbiais, prepositivas, conjuncionais (por agora)
 
 **NOTA: em construção**
@@ -361,9 +351,13 @@ classe aberta    = verbo | adjetivo | adverbio ;
 
 verbo     = ser | estar | ter ;
 
-ser       = 'é' | 'são'
-
-estar     = 'está'  | 'estão' 
+(* verbos copulativos ou de ligacao *)
+ser       = 'é' | 'são' ;
+estar     = 'está'  | 'estão' ;
+ficar     = 'fica'  | 'ficam' ;
+parecer   = 'parece'    | 'parece' ;
+permancer = 'permanece' | 'permanecem' ;
+continuar = 'continua'  | 'continuam' ;
 
 ter       = 'tem' ;
 
@@ -508,7 +502,8 @@ pronome possesivo     = 'minha' | 'minhas'  | 'meu'   | 'meus'
 
 pronome indefinido    = 'certa' | 'certas'  | 'certo' | 'certos'
                       | 'outra' | 'outras'  | 'outro' | 'outros' ;
-                          
+                      (* faltam vários consultar gramática *)
+
 pronome relativo      = 'cuja'  | 'cujas'   | 'cujo'  | 'cujas' ;
 
 pronome interrogativo = 'que' | 'qual' | 'quais'
@@ -586,46 +581,46 @@ conjuncao condicional   = 'se' | 'senão' | 'caso' ;
 conjuncao comparativa   = 'como' | 'conforme' ;
 conjuncao consecutiva   = 'que' ; (* quando *)
 
-contracao =
           (*  a + art.  *)
-          | 'à'   | 'às'  | 'ao'  | 'aos'
           (*  a + pron. dem.  *)
-          | 'àquela' | 'àquelas'| 'àquele' | 'àqueles'
           (*  a + adv.  *)
-          | 'aonde' | 'Aonde'
           (*  de + art. *)
+          (*  de + pron. pess. *)
+          (*  de + pron. dem.  *)
+          (*  de + pron. indef. *)
+          (*  de + adv. ou de + prep. *)
+          (*  em + art. *)
+          (*  em + pron. pess. *)
+          (*  em + pron. dem.  *)
+          (*  em + pron. indef. *)
+          (*  por + pron. pess.  *)
+
+
+contracao = 'à'   | 'às'  | 'ao'  | 'aos'
+          | 'àquela' | 'àquelas'| 'àquele' | 'àqueles'
+          | 'aonde' | 'Aonde'
           | 'da'    | 'das'   | 'do'  | 'dos'
           | 'duma'  | 'dumas' | 'dum' | 'duns'
-          (*  de + pron. pess. *)
           | 'dela'    | 'delas'   | 'dele'    | 'deles'
-          (*  de + pron. dem.  *)
           | 'desta'   | 'destas'  | 'deste'   | 'destes'
           | 'dessa'   | 'dessas'  | 'desse'   | 'desses'
           | 'daquela' | 'daquelas'| 'daquele' | 'daqueles'
           | 'daquilo'
-          | 'Daquilo'
-          (*  de + pron. indef. *)
           | 'doutra'  | 'doutras' | 'doutro'  | 'doutros'
-          (*  de + adv. ou de + prep. *)
           | 'daqui' | 'daí' | 'dali' | 'daquém' | 'dalém' | 'dentre'
           | 'dantes' | 'dacolá' | 'donde'
-          (*  em + art. *)
           | 'na'  | 'nas' | 'no'  | 'nos'
           | 'numa'  | 'numas' | 'num'   | 'nuns'
-          (*  em + pron. pess. *)
           | 'nela'    | 'nelas'   | 'nele'    | 'neles'
-          (*  em + pron. dem.  *)
           | 'neste'   | 'nesta'   | 'nestes'  | 'nestas'
           | 'nesse'   | 'nessa'   | 'nesses'  | 'nessas'
           | 'naquele' | 'naquela' | 'naqueles'| 'naquelas'
           | 'naquilo'
-          (*  em + pron. indef. *)
           | 'noutro'  | 'noutra'  | 'noutros' | 'noutras'
-          (*  por + pron. pess.  *)
-          | 'pelo'    | 'pela'    | 'pelos'   | 'pelas'
-          ;
+          | 'pelo'    | 'pela'    | 'pelos'   | 'pelas' ;
 
-diversa   = 'como'  (* verb.       *)
+(* 
+diversa   = 'como'  verb.
           | 'qual'  (* conj. *)
           | 'quais' (* conj. *)
           | 'se'            (* pron.    *)
@@ -635,4 +630,8 @@ diversa   = 'como'  (* verb.       *)
           | 'conforme'      (* adj. 2 g. | adv. | conj. | prep. *)
           | 'consoante'     (* adj. 2 g. | n. f. | prep. *)
           | ? a ser definidos num arquivo separado ? ;
+*)
 ```
+
+test
+
