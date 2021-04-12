@@ -581,20 +581,18 @@ conjuncao condicional   = 'se' | 'senão' | 'caso' ;
 conjuncao comparativa   = 'como' | 'conforme' ;
 conjuncao consecutiva   = 'que' ; (* quando *)
 
-          (*  a + art.  *)
-          (*  a + pron. dem.  *)
-          (*  a + adv.  *)
-          (*  de + art. *)
-          (*  de + pron. pess. *)
-          (*  de + pron. dem.  *)
-          (*  de + pron. indef. *)
-          (*  de + adv. ou de + prep. *)
-          (*  em + art. *)
-          (*  em + pron. pess. *)
-          (*  em + pron. dem.  *)
-          (*  em + pron. indef. *)
-          (*  por + pron. pess.  *)
-
+(*  a + pron. dem.  *)
+(*  a + adv.  *)
+(*  de + art. *)
+(*  de + pron. pess. *)
+(*  de + pron. dem.  *)
+(*  de + pron. indef. *)
+(*  de + adv. ou de + prep. *)
+(*  em + art. *)
+(*  em + pron. pess. *)
+(*  em + pron. dem.  *)
+(*  em + pron. indef. *)
+(*  por + pron. pess.  *)
 
 contracao = 'à'   | 'às'  | 'ao'  | 'aos'
           | 'àquela' | 'àquelas'| 'àquele' | 'àqueles'
