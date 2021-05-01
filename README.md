@@ -45,7 +45,7 @@ O Pedro é um criador!       # uma exclamação verifica informação    #
 
 A pontuação da linguagem é [fixa](#gramatica). Mas a linguagem tem *construções* de frase dinâmicas que podem ser definidas pelo usuário.
 
-Cada construção tem um procedimento associado, dependendo do tipo de frase. Por exemplo, a primeira frase acima tem um procedimento que declara que a entidade `Maria` é do tipo `agricultora`.
+Cada construção tem um procedimento associado, dependendo do tipo de frase. Por exemplo, a primeira frase acima usa um procedimento que declara que a entidade `Maria` é do tipo `agricultora`.
 
 Cada construção é composta por um identificador principal, padrões e diversos identificadores chave. Por exemplo, as frases acima seguem a construção `(uma entidade) é (um tipo)`, composto do identificador principal `é` um padrão de entidade e um padrão de tipo.
 
@@ -155,7 +155,7 @@ Atualmente o projeto está a considerar utilizar a plataforma Java por os seguin
 
 A primeira implementação será um interpretador composto das seguintes fases de análise:
 
-* Morfológica : identifica os[morfemas](#gmorfologica);
+* Morfológica : identifica os [morfemas](#gmorfologica);
 * Léxica      : identifica os [lexemas](#glexica);
 * Sintática   : identifica as estruturas sintáticas ([sintagmas](#gsintatica));
 * Semântica   : avalia o significado (sememas) associados a cada estrutura sintática.
@@ -180,61 +180,52 @@ O léxico deve ser interpretado como uma gramática [GLC](https://pt.wikipedia.o
 
 ```EBNF
 
-documento       = paragrafo , [ espacos ] ;
-paragrafo       = frase , { espacos , frase } ;
+documento     = paragrafo , [ espacos ] ;
+paragrafo     = frase , { espacos , frase } ;
 
-frase           = declaracao | interrogacao | exclamacao ;
-declaracao      = periodo , '.' ;
-interrogacao    = periodo , '?' ;
-exclamacao      = periodo , '!' ;
+frase         = declaracao | interrogacao | exclamacao ;
+declaracao    = periodo , '.' ;
+interrogacao  = periodo , '?' ;
+exclamacao    = periodo , '!' ;
 
-periodo         = procedimento | macro | oracao ;
+periodo           = periodo simples | periodo composto ;
+periodo simples   = oracao ;
+periodo composto  = sequencia
+                  , ( ',' , espacos , sequencia )
+                  , { ',' , espacos , sequencia } ;
 
-procedimento    = funcao | comando | regra | tipo ;
-funcao          = 'função'  , [ oracao ] , bloco ;
-comando         = 'comando' , [ oracao ] , bloco ;
-regra           = 'regra'   , oracao , bloco ;
-tipo            = 'tipo' , [ identificador ] , bloco ;
+oracao        =  lista | associação | sequencia ;
 
-macro           = 'macro ' , procedimento ;
+sequencia     = [ espacos ] , termo , { espacos , termo } ;
 
-oracao          = [ espacos ] , termo , { espacos , termo } ;
+lista         = ( sequencia | associacao )
+              , ( ';' , ( sequencia | associacao ) }
+              , { ';' , ( sequencia | associacao ) } ;
 
-termo           = item | grupo | lista ;
+associacao    = sequencia , [ espacos ] , ':' , ( sequencia | associacao ) ;
 
-item            = literal | variavel chave | variavel | chave | identificador
-                | comentario | misto ;
+termo         = grupo | item ;
 
-literal         = nulo | booleano | numero | texto ;
+grupo         = expressao | bloco | padrao ;
 
-variavel chave  = ':' , identificador - reservado , ':'
-                | ':' , grupo , variavel chave ;
-variavel        = ':' , identificador - reservado
-                | ':' , grupo , variavel ;
+expressao     = '[' , ( periodo | paragrafo ) , [ espacos ] , ']' ;
+bloco         = '{' , ( periodo | paragrafo ) , [ espacos ] , '}' ;
+padrao        = '(' , ( associação | sequencia ) , [ espacos ] , ')' ;
 
-grupo           = expressao | bloco | padrao ;
-expressao       = '[' , ( periodo | paragrafo ) , [ espacos ] , ']' ;
-bloco           = '{' , ( periodo | paragrafo ) , [ espacos ] , '}' ;
-padrao          = '(' , periodo , [ espacos ] , ')' l
-
-lista           = ( item - chave | grupo )
-                , ( ';' , espacos , ( item - chave | grupo ) )
-                , { ';' , espacos , ( item - chave | grupo } ;
+item          = literal | chave | identificador | comentario | especial ;
 ```
 
 ### <a name="glexica"></a>Sub-gramática léxica
 
 ```EBNF
-lexema        = espacos | nulo | booleano | numero | texto | identificador
-              | operador | reservado | comentario | misto ; 
 
 espacos       = ESPACO , { ESPACO } ;
 
-nulo          = 'nulo' ;
+literal       = texto | numero | booleano | nulo ;
 
-booleano      = 'verdadeiro' | 'falso' ;
+texto         = TEXTO ;
 
-numero        = real | fracional | inteiro ;
+numero        = real | racional | inteiro ;
 real          = ('-' | '+') , NUMERO , ',' , NUMERO ;
 racional      = ('-' | '+') , NUMERO , '/' , NUMERO ;
 inteiro       = decimal | binario | octal | hexadecimal ;
@@ -243,45 +234,49 @@ binario       = '0b' , NUMERO ;
 octal         = '0o' , NUMERO ;
 hexadecimal   = '0x' , NUMERO ;
 
-texto         = TEXTO ;
+booleano      = 'verdadeiro' | 'falso' ;
+nulo          = 'nulo' ;
 
-chave         = identificador , ':' ;
+chave         = ':' , identificador ;
 
-identificador = reservado | operador | PALAVRA | COMPOSTO
-              | identificador , { ':' , misto | LITERAL | identificador } ;
+identificador = reservado | aninhado | PALAVRA | OPERADOR | DELIMITADO ;
 
-operador      = SIMBOLO , { SIMBOLO } ;
+reservado     = 'macro' | 'função' | 'comando' | 'regra' | 'tipo'
+              | booleano | nulo | lexico ;
 
-reservado     = 'macro' | 'função' | 'comando' | 'regra' | 'tipo' | 'nulo'
-              | 'verdadeiro' | 'falso' | lexico ;
+aninhado      = identificador , ':' , ( literal | especial | identificador ) ;
 
 comentario    = COMENTARIO ;
-
-misto         = CARATERE , { CARATERE | SINAL  - ':' } , CARATERE ;
+especial      = ESPECIAL ;
 ```
 
 ### <a name="gmorfologica"></a>Sub-gramática morfológica
 
 ```EBNF
-MORFEMA       = LITERAL | PALAVRA | COMPOSTO | COMENTARIO
+MORFEMA       = LITERAL | PALAVRA | OPERADOR | EXTENSO | COMPOSTO | COMENTARIO
 
-LITERAL       = NUMERO | TEXTO ;
+LITERAL       = NUMERO | TEXTO | ESPECIAL ;
 
-NUMERO        = DIGITO { DIGITO } ;
+NUMERO        = DIGITO , { DIGITO } ;
 
-TEXTO         = "'" , { CORINGA - "'" | "\'" } , '"'
-              | '"' , { CORINGA - '"' | '\"' } , '"'
-              | '«' , { CORINGA - '»' | '\»' } , '»' ;
+TEXTO         = "'" , { CURINGA - "'" | "\'" } , '"'
+              | '"' , { CURINGA - '"' | '\"' } , '"'
+              | '«' , { CURINGA - '»' | '\»' } , '»' ;
 
-PALAVRA       = LETRA , { LETRA } ;
-COMPOSTO      = '`' , CORINGA { CORINGA - '`' | '\`' } , '`' ;
+ESPECIAL      = CARATERE , { CARATERE | SINAL  - ':' } , CARATERE ;
 
-COMENTARIO    = '#' , { '#' } , ESPACO , { (CORINGA - '#' | '\#') , ESPACO }
+PALAVRA       = LETRA , { LETRA } | COMPOSTA ;
+OPERADOR      = SIMBOLO , { SIMBOLO } ;
+DELIMITADO    = '`' , ( CURINGA - '`' - `\n` | '\`' )
+                    , { CURINGA - '`' - `\n` | '\`' } , '`' ;
+
+COMENTARIO    = '#' , { '#' }
+              , ESPACO , { ( CURINGA - '#' | '\#' ) , ESPACO }
               , '#' , { '#' } ;
 
-CORINGA   = ESPACO | CARATERE | SINAL ;
+CURINGA   = ESPACO | CARATERE | SINAL ;
 
-ESPACO    = ' ' | '\n' | '\t' ;
+ESPACO    = ' ' | '\t' | '\n' ;
 
 CARATERE  = LETRA | DIGITO | SIMBOLO ;
 
@@ -630,6 +625,3 @@ diversa   = 'como'  verb.
           | ? a ser definidos num arquivo separado ? ;
 *)
 ```
-
-test
-
