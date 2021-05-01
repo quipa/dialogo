@@ -194,7 +194,7 @@ periodo composto  = sequencia
                   , ( ',' , espacos , sequencia )
                   , { ',' , espacos , sequencia } ;
 
-oracao        =  lista | associação | sequencia ;
+oracao        =  lista | associacao | sequencia ;
 
 sequencia     = [ espacos ] , termo , { espacos , termo } ;
 
@@ -210,7 +210,7 @@ grupo         = expressao | bloco | padrao ;
 
 expressao     = '[' , ( periodo | paragrafo ) , [ espacos ] , ']' ;
 bloco         = '{' , ( periodo | paragrafo ) , [ espacos ] , '}' ;
-padrao        = '(' , ( associação | sequencia ) , [ espacos ] , ')' ;
+padrao        = '(' , ( associacao | sequencia ) , [ espacos ] , ')' ;
 
 item          = literal | chave | identificador | comentario | especial ;
 ```
