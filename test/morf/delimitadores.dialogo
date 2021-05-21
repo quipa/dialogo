@@ -1,0 +1,9 @@
+// testa comentários, textos, colchetes, chavetas e parêntesis
+
+// Três irmãs
+[
+    'milho'         [/[/ Zea mays /]/]
+    {"feijão"       {/{/ Phaseolus vulgaris /}/}
+        («abóbora») (/(/ Cucurbita pepo /)/)
+    }
+] 

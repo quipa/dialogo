@@ -1,0 +1,22 @@
+COMMENT [/ testa palavras /]
+SPACE
+COMMENT // (entidade) é (tipo)
+SPACE
+WORD A
+SPACE
+WORD Maria
+SPACE
+WORD é
+SPACE
+WORD agricultora
+DOT .
+SPACE
+WORD O
+SPACE
+WORD José
+SPACE
+WORD é
+SPACE
+WORD apicultor
+DOT .
+SPACE

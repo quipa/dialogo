@@ -1,3 +1,5 @@
+
+
 # Dialogo
 Uma linguagem para diálogo entre humanos e computadores.
 
@@ -7,20 +9,22 @@ Criar e usar sistemas interativos de informação de modo simples e fléxivel.
 ## Requisitos
 * **Humanos**:
   * DEVE ser fácil de ler, escrever e compreender para pessoas com educação de ensino médio Brasileiro;
-  * DEVE ser fácil de ler e compreender para pessoas com educação básica e auxílio de terceiros.
-  * DEVE ser fácil de aprender e ensinar num curto espaço de tempo;
+  * DEVE ser fácil de ler e compreender para pessoas com educação de ensino básico Brasileiro e auxílio de terceiros.
   * DEVE ser baseada em Português e ter uma sintaxe e semântica quase natural;
-  * DEVE permitir criar, pesquisar, atualizar e apagar informações de modo simples e fléxivel;
+  * DEVE ser adaptável e interativa;
+  * DEVE ser fácil de aprender e ensinar num curto espaço de tempo;
+  * DEVE permitir criar, pesquisar, atualizar e apagar informações de modo dinâmico;
   * DEVE permitir armazenar informações num formato textual legível para humanos;
-  * DEVE ser fácil de instalar e configurar;
+  * É RECOMENDÁVEL ser fácil de instalar e configurar;
 * **Tecnológicos**
   * DEVE ser bem definida e não-ambígua em termos computacionais;
   * DEVE ter poucas dependências obrigatórias;
   * NÃO DEVE deve depender de conexão de Internet para instalar, configurar e utilizar.
-  * DEVE suportar sistemas operativos *desktop* (Windows, GNU/Linux, Windows)
-  * PODE suportar sistemas operativos *mobile* e plataformas *web*;
-  * PODE criar interfaces gráficas para sistemas de informação.
-  * PODE integrar sistemas de informação externos (através de API, bindings e protocolos);
+  * DEVE ter implementação aberta, de preferência com licença permissiva (BSD, MIT, Apache)
+  * DEVE que suportar sistemas operativos *desktop* (Windows, GNU/Linux, Mac OS)
+  * É RECOMENDÁVEL suportar sistemas operativos *mobile* e plataformas *web*;
+  * É RECOMENDÁVEL ter uma interface gráfica adaptável que permita explorar a manipular informações;
+  * É RECOMENDÁVEL integrar sistemas de informação externos (através de API, bindings e protocolos);
 
 ## Histórico
 Esta linguagem foi inspirada por experiências de ensino/aprendizado do [Projeto Quipá](https://www.facebook.com/projetoquipa/) durante a sua campanha *Ação no Sertão* de 2019 no Território Serra da Capivara, Piauí, Brasil. Durante esta campanha foram organizados cursos em colaboração com a [Cáritas Diocesana de São Raimundo Nonato](https://www.facebook.com/CaritasSRN/) junto com comunidades rurais, técnicos e profissionais de extensão e estudantes de ensino técnico da Escola Família Agrícola da Serra da Capivara.
@@ -172,7 +176,7 @@ Segue a gramática estática da linguagem em formato [EBNF](https://pt.wikipedia
 
 As sub-gramáticas devem ser interpretada como gramáticas [GASE](https://pt.wikipedia.org/wiki/Gramática_de_análise_sintática_de_expressão) (*[PEG](https://en.wikipedia.org/wiki/Parsing_expression_grammar)*), com alternativas `|` selecionadas da esquerda para a direita. 
 
-O léxico deve ser interpretado como uma gramática [GLC](https://pt.wikipedia.org/wiki/Gramática_livre_de_contexto) (CFG), na qual cada palavra é associada com todos os significados possíveis ().
+O léxico deve ser interpretado como uma gramática [GLC](https://pt.wikipedia.org/wiki/Gramática_livre_de_contexto) (CFG), na qual cada palavra é associada com todos os significados possíveis.
 
 **NOTA: carateres latinos não são utilizados nos não-terminais da gramática porque o realce de sintaxe do Github não os reconhece.**
 
@@ -180,39 +184,37 @@ O léxico deve ser interpretado como uma gramática [GLC](https://pt.wikipedia.o
 
 ```EBNF
 
-documento     = paragrafo , [ espacos ] ;
-paragrafo     = frase , { espacos , frase } ;
+documento     = [ espacos ] , paragrafo ;
+paragrafo     = { frase } ;
 
 frase         = declaracao | interrogacao | exclamacao ;
-declaracao    = periodo , '.' ;
-interrogacao  = periodo , '?' ;
-exclamacao    = periodo , '!' ;
+declaracao    = periodo , '.' , espacos ;
+interrogacao  = periodo , '?' , espacos ;
+exclamacao    = periodo , '!' , espacos ;
 
-periodo           = periodo simples | periodo composto ;
-periodo simples   = oracao ;
-periodo composto  = sequencia
-                  , ( ',' , espacos , sequencia )
-                  , { ',' , espacos , sequencia } ;
+periodo     = [ espacos ] , oracao
+            | sequencia , { ',' , espacos , sequencia } ;
 
-oracao        =  lista | associacao | sequencia ;
+oracao      = sequencia | associacao | lista | dicionario ;
 
-sequencia     = [ espacos ] , termo , { espacos , termo } ;
+sequencia   = [ termo ] , { espacos , termo } ;
+associacao  = termo , { ':' ,  espacos , termo } , sequencia ;
+lista       = sequencia  , { ';' , espacos , sequencia  }
+dicionario  = associacao , { ';' , espacos , associacao } ;
 
-lista         = ( sequencia | associacao )
-              , ( ';' , ( sequencia | associacao ) }
-              , { ';' , ( sequencia | associacao ) } ;
+termo       = comentario | item | grupo | chave | tupla ;
 
-associacao    = sequencia , [ espacos ] , ':' , ( sequencia | associacao ) ;
+grupo       = expressao | bloco | padrao ;
+expressao   = '[' , corpo , ']' ;
+bloco       = '{' , corpo , '}' ;
+padrao      = '(' , periodo , [ espacos ] , ')' ;
+corpo       = espacos , paragrafo , espacos | periodo , [ espacos ] ;
 
-termo         = grupo | item ;
+chave       = ':' , tupla ;
 
-grupo         = expressao | bloco | padrao ;
-
-expressao     = '[' , ( periodo | paragrafo ) , [ espacos ] , ']' ;
-bloco         = '{' , ( periodo | paragrafo ) , [ espacos ] , '}' ;
-padrao        = '(' , ( associacao | sequencia ) , [ espacos ] , ')' ;
-
-item          = literal | chave | identificador | comentario | especial ;
+tupla       = ( item | grupo )
+            , { ':' , [ item | grupo ] }
+            , ( item | grupo ) ;
 ```
 
 ### <a name="glexica"></a>Sub-gramática léxica
@@ -221,7 +223,9 @@ item          = literal | chave | identificador | comentario | especial ;
 
 espacos       = ESPACO , { ESPACO } ;
 
-literal       = texto | numero | booleano | nulo ;
+item        = literal | identificador | especial ;
+
+literal       = nulo | booleano | texto | numero ;
 
 texto         = TEXTO ;
 
@@ -237,46 +241,42 @@ hexadecimal   = '0x' , NUMERO ;
 booleano      = 'verdadeiro' | 'falso' ;
 nulo          = 'nulo' ;
 
-chave         = ':' , identificador ;
+identificador = palavra | operador | extenso ;
+palavra       = PALAVRA , { ( "'" | '-' ) , PALAVRA } ;
+operador      = SIMBOLO , { SIMBOLO } ;
+extenso       = EXTENSO ;
 
-identificador = reservado | aninhado | PALAVRA | OPERADOR | DELIMITADO ;
-
-reservado     = 'macro' | 'função' | 'comando' | 'regra' | 'tipo'
-              | booleano | nulo | lexico ;
-
-aninhado      = identificador , ':' , ( literal | especial | identificador ) ;
+especial      = MORFEMA , ( MORFEMA | PONTO - ':' ) , MORFEMA ;
 
 comentario    = COMENTARIO ;
-especial      = ESPECIAL ;
+
 ```
 
 ### <a name="gmorfologica"></a>Sub-gramática morfológica
 
 ```EBNF
-MORFEMA       = LITERAL | PALAVRA | OPERADOR | EXTENSO | COMPOSTO | COMENTARIO
-
-LITERAL       = NUMERO | TEXTO | ESPECIAL ;
-
-NUMERO        = DIGITO , { DIGITO } ;
-
-TEXTO         = "'" , { CURINGA - "'" | "\'" } , '"'
-              | '"' , { CURINGA - '"' | '\"' } , '"'
-              | '«' , { CURINGA - '»' | '\»' } , '»' ;
-
-ESPECIAL      = CARATERE , { CARATERE | SINAL  - ':' } , CARATERE ;
-
-PALAVRA       = LETRA , { LETRA } | COMPOSTA ;
-OPERADOR      = SIMBOLO , { SIMBOLO } ;
-DELIMITADO    = '`' , ( CURINGA - '`' - `\n` | '\`' )
-                    , { CURINGA - '`' - `\n` | '\`' } , '`' ;
-
-COMENTARIO    = '#' , { '#' }
-              , ESPACO , { ( CURINGA - '#' | '\#' ) , ESPACO }
-              , '#' , { '#' } ;
-
-CURINGA   = ESPACO | CARATERE | SINAL ;
 
 ESPACO    = ' ' | '\t' | '\n' ;
+
+MORFEMA   = NUMERO | TEXTO | PALAVRA | SIMBOLO ;
+
+NUMERO    = DIGITO , { DIGITO } ;
+TEXTO     = "'" , { CURINGA - "'" | "\'" } , '"'
+          | '"' , { CURINGA - '"' | '\"' } , '"'
+          | '«' , { CURINGA - '»' | '\»' } , '»' ;
+
+PALAVRA     = LETRA , { LETRA } ;
+
+EXTENSO     = '`' , { CURINGA - '`' - '\n' | '\`' } ,
+                  , ( CURINGA - '`' - ESPACO )
+                  , { CURINGA - '`' - '\n' | '\`' } , '`' ;
+
+COMENTARIO  = '//' , { CURINGA - '\n' }
+            | '[/' , { COMENTARIO | CURINGA - '/' | '\/' } , '/]'
+            | '{/' , { COMENTARIO | CURINGA - '/' | '\/' } , '/}'
+            | '(/' , { COMENTARIO | CURINGA - '/' | '\/' } , '/)' ;
+
+CURINGA   = ESPACO | CARATERE | SINAL ;
 
 CARATERE  = LETRA | DIGITO | SIMBOLO ;
 
@@ -297,12 +297,12 @@ LETRA     = 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k'
           | 'Â' | 'Ê' | 'Ô' ;
 DIGITO    = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
 SIMBOLO   = '+' | '-' | '*' | '/' | '=' | '<' | '>' | '%' | '|' | '&'
-          | '$' | '@' | '\' | '_' | '~' | '^' ;
+          | '$' | '@' | '_' | '~' | '^' | '#' | '\' ;
 
 SINAL       = PONTO | DELIMITADOR ;
 PONTO       = '.' | '?' | '!' | ':' | ';' | ',' ;
 DELIMITADOR = '[' | ']' | '{' | '}' | '(' | ')'
-            | '`' | "'" | '"' | '«' | '»' | '#' ;
+            | '`' | "'" | '"' | '«' | '»' ;
 ```
 
 ### <a name="lexico"></a>Léxico de palavras reservadas

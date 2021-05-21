@@ -1,0 +1,31 @@
+COMMENT // testa acentos, palavras, sinais.
+SPACE
+WORD animais
+SPACE
+COLON :
+SPACE
+LEFT_BRACKET [
+SPACE
+WORD mocó
+SEMICOLON ;
+SPACE
+WORD tamanduá
+SEMICOLON ;
+SPACE
+WORD saruê
+SEMICOLON ;
+SPACE
+WORD zabelê
+SEMICOLON ;
+SPACE
+WORD joão
+SYMBOL -
+WORD de
+SYMBOL -
+WORD barro
+SEMICOLON ;
+SPACE
+WORD cancão
+SPACE
+RIGHT_BRACKET ]
+SPACE

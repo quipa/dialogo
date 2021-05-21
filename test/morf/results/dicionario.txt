@@ -1,0 +1,44 @@
+COMMENT // testa acentos, palavras, sinais, texto.
+SPACE
+WORD plantas
+SPACE
+COLON :
+SPACE
+LEFT_BRACKET [
+SPACE
+WORD milho
+SPACE
+COLON :
+SPACE
+TEXT 'corn'
+SEMICOLON ;
+SPACE
+WORD feijão
+SPACE
+COLON :
+SPACE
+TEXT 'bean'
+SEMICOLON ;
+SPACE
+WORD abóbora
+SPACE
+COLON :
+SPACE
+TEXT 'squash'
+SEMICOLON ;
+SPACE
+WORD açafrão
+SPACE
+COLON :
+SPACE
+TEXT 'saffron'
+SEMICOLON ;
+SPACE
+WORD quipá
+SPACE
+COLON :
+SPACE
+TEXT 'Tacinga inamoena'
+SPACE
+RIGHT_BRACKET ]
+SPACE

@@ -1,0 +1,25 @@
+COMMENT // testa comentários, textos, colchetes, chavetas e parêntesis
+SPACE
+COMMENT // Três irmãs
+SPACE
+LEFT_BRACKET [
+SPACE
+TEXT 'milho'
+SPACE
+COMMENT [/[/ Zea mays /]/]
+SPACE
+LEFT_BRACE {
+TEXT "feijão"
+SPACE
+COMMENT {/{/ Phaseolus vulgaris /}/}
+SPACE
+LEFT_PAREN (
+TEXT «abóbora»
+RIGHT_PAREN )
+SPACE
+COMMENT (/(/ Cucurbita pepo /)/)
+SPACE
+RIGHT_BRACE }
+SPACE
+RIGHT_BRACKET ]
+SPACE

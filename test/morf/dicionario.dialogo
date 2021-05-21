@@ -1,0 +1,9 @@
+// testa acentos, palavras, sinais, texto.
+
+plantas : [
+    milho  : 'corn';
+    feijão : 'bean';
+    abóbora : 'squash';
+    açafrão : 'saffron';
+    quipá   : 'Tacinga inamoena'
+]

@@ -1,0 +1,123 @@
+# DIALOGO language #
+
+#
+The document declares some information about a hypothetical farmer association, their agroecological crop production, their clients, and based on the association’s production calculates the price of a produce basket for each client (see comments describing what code does).
+#
+
+# declare crops #
+
+Feijão é uma cultura.
+Milho é uma cultura.
+Abóbora é uma cultura.
+Coentro é uma cultura.
+Cebolinha é uma cultura.
+
+# declare information about a farmer’s association #
+
+A `Associação Quipá` [
+  É uma associação de: agricultores.
+  Tem sede na localidade `Baixão do Sítio` em Coronel José Dias.
+  Tem certificado de: produção orgânica].
+
+[A Maria; o José; a Ana; o Pedro] são agricultores.
+Os agricultores são membros da `Associação Quipá`.
+
+# declare how much each farmer produced #
+
+A Maria plantou 2 hectares de: consórcio de: [milho; feijão; abóbora].
+O José  plantou 1 hectare de: consórcio de: [milho; feijão].
+A Ana   plantou 2 canteiros de: coentro.
+O Pedro plantou 2 canteiro de: cebolinha.
+
+# declare more information about the association #
+
+Para a `Associação Quipá` {
+  
+  # price and productivity of different crops #
+  
+  1 kg de:    feijão   custa R$ 10,00.
+  1 kg de:     milho   custa R$ 10,00.
+  1 kg de:   abóbora   custa R$  8,00.
+  1 maço de: coentro   custa R$  3,20.
+  1 maço de: cebolinha custa R$  4,20.
+  
+  1 ha de:  feijão em: consórcio produz XXX.
+  1 ha de:   milho em: consórcio produz XXX.
+  1 ha de: abóbora em: consórcio produz XXX.
+  
+  Propriedade {(o preço) de (uma cultura)} {
+    1 kg da cultura custa :valor.
+    Resultado é valor.
+  }.
+  
+  Propriedade {a quantidade da produção de (uma cultura)} {
+  
+  }.
+  
+  Propriedade {o valor da produção de (uma cultura) {
+    produção da cultura * preço da cultura
+  }.
+  
+  propriedade {}`produção total` [cálculo {soma [produção das culturas]}]
+  Milho   em consórcio produz XXX.
+  Feijão  em consórcio produz XXX.
+  Abóbora em consórcio produz XXX.
+  
+  # create a new product type #
+  
+  1 maço de: `cheiro verde` tem [
+    meio maço de: coentro;
+    meio maço de: cebolinha].
+  
+  1 maço de: `cheiro verde` custa [
+    cálculo {
+      custo de: maço de: coentro / 2 + custo de: maço de: cebolinha / 2}].
+}.
+
+# declare clients and product preferences #
+
+Os clientes da `Associação Quipá` [
+	São [a Francisca; o João; a Rosa; o Carlos; a Luzia; o Lucas].
+  Moram em: São Raimundo Nonato.
+].
+
+[A Francisca; o Carlos; a Luzia] gostam de: `cheiro verde`.
+
+# declare a command that prepares produce baskets # 
+
+Comando {(uma associação de: agricultores) prepara (cestas)} {
+  
+  # use association as main context #
+  Com a associação [
+    
+    # calculate number requests #
+    `número de pedidos` é [quantos clientes há?].
+    `número de cheiros verdes` é [
+      quantos clientes gostam de: `cheiro verde`?].
+    
+    # calculate how much produce each basket should have #
+    
+    1 cesta tem [
+      quantidade de produção de feijão  / `número de pedidos`;
+      quantidade de produção de milho   / `número de pedidos`;
+      quantidade de produção de abóbora / `número de pedidos`;
+      [converter [produção de coentro; produção de cebolinha]
+        em: maços de: `cheiro verde`] / `número de cheiros verdes`
+    ].
+    
+    Para cada: cliente fazer: {
+  ].
+  
+    
+  }.
+}.
+
+A cesta da cliente 
+
+Se [a cliente gosta de: `cheiro verde`] então: {
+	acrescentar `cheiro verde` à: cesta da cliente.}.
+
+Diz [quanto custa a cesta da cliente?]. # resposta é R$ XXX #
+
+Se [a produção da `Associação Quipá` > quantidade da cesta da cliente]
+então: { `Associação Quipá` prepara cesta. } senão: { Diz [nome da cliente] + a associação ão temos produção suficiente para o seu “}

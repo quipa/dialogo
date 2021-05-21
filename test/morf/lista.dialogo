@@ -1,0 +1,10 @@
+// testa acentos, palavras, sinais.
+
+animais : [
+    mocó;
+    tamanduá;
+    saruê;
+    zabelê;
+    joão-de-barro;
+    cancão
+]
