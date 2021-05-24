@@ -3,12 +3,14 @@ package org.quipa.dialogo;
 
 class DialogoError extends RuntimeException {
   
+  public final Mode mode;
   public final int line;
   public final int position;
   public final String message;
   
-  DialogoError(int line, int position, String message) {
+  DialogoError(Mode mode, int line, int position, String message) {
     super(message);
+    this.mode = mode;
     this.line = line;
     this.position = position;
     this.message = message;

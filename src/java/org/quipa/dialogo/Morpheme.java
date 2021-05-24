@@ -8,15 +8,27 @@
 
 package org.quipa.dialogo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Iterator;
-
+import java.util.ArrayDeque;
+import java.util.Enumeration;
+import java.util.stream.Collectors;
 
 class Morpheme {
+  
+  enum Type {
+    LEFT_BRACKET, RIGHT_BRACKET,
+    LEFT_BRACE,   RIGHT_BRACE,
+    LEFT_PAREN,   RIGHT_PAREN,
 
+    DOT, QUESTION_MARK, EXCLAMATION_MARK,
+    COMMA, SEMICOLON, COLON,
+    
+    SPACE,
+    
+    WORD, NUMBER, SYMBOL,
+    TEXT, IDENTIFIER, COMMENT,
+    EOF
+  }
+  
   final Morpheme.Type type;
   final String text;
   final int line;
@@ -44,23 +56,9 @@ class Morpheme {
       return type + " " + text;
   }
   
-  enum Type {
-    LEFT_BRACKET, RIGHT_BRACKET,
-    LEFT_BRACE,   RIGHT_BRACE,
-    LEFT_PAREN,   RIGHT_PAREN,
-
-    DOT, QUESTION_MARK, EXCLAMATION_MARK,
-    COMMA, SEMICOLON, COLON,
+  static class Analyser implements Enumeration<Morpheme>, Phase {
     
-    SPACE,
-    
-    WORD, NUMBER, SYMBOL,
-    TEXT, IDENTIFIER, COMMENT
-  }
-  
-  static class Analyser implements
-      Iterable<Morpheme>,
-      Iterator<Morpheme> {
+    private static final Mode mode = Mode.MORPHOLOGICAL;
     private final String source;
     private int line = 1;
     private int start = 0;
@@ -70,25 +68,44 @@ class Morpheme {
       this.source = source;
     }
     
-    public Iterator<Morpheme> iterator() {
-      return this;
+    public boolean hasMoreElements() {
+      return !isAtEnd();
     }
     
-    public boolean hasNext() {
-      return !isAtEnd() ;
-    }
-    
-    public Morpheme next() {
+    public Morpheme nextElement() {
       start = current;
       return get(morpheme());
     }
+    
+    public String call() throws DialogoErrors {
+      var results = new ArrayDeque<Morpheme>();
+      var errors = new ArrayDeque<DialogoError>();
+      
+      while (hasMoreElements()) {
+        try {
+          results.add(nextElement());
+        } catch (DialogoError e) {
+          errors.add​(e);
+        }
+      }
+      
+      if (errors.size() != 0) {
+        throw new DialogoErrors(errors);
+      } else {
+        return results.stream()
+          .map(m -> m.toString())
+          .collect(Collectors.joining("\n"));
+      }
+    }
+    
+    // Utilities
     
     private Morpheme get(Morpheme.Type type) {
       String text = source.substring(start, current);
       return new Morpheme(type, text, line, start);
     }
     
-    // Morphemes
+    // Morpheme rules
     
     private Morpheme.Type morpheme() throws DialogoError {
       char c = advance();
@@ -252,8 +269,7 @@ class Morpheme {
     }
     
     private DialogoError error(String message) {
-      DialogoError e =  new DialogoError(line, start, message);
-      return e;
+      return new DialogoError(mode, line, start, message);
     }
     
     // Character Predicates
@@ -281,7 +297,7 @@ class Morpheme {
       }
     }
     
-    // Analyzer state methods
+    // Analyzer state methods.
     
     private boolean isAtEnd() {
       return current >= source.length();

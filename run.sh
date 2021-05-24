@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-rlwrap java -jar bin/java/jar/dialogo.jar "$@"
+case $1 in
+    java | *)
+        rlwrap java -jar bin/java/jar/dialogo.jar "$@"
+        ;;
+esac

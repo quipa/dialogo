@@ -242,14 +242,15 @@ booleano      = 'verdadeiro' | 'falso' ;
 nulo          = 'nulo' ;
 
 identificador = palavra | operador | extenso ;
+
 palavra       = PALAVRA , { ( "'" | '-' ) , PALAVRA } ;
+
 operador      = SIMBOLO , { SIMBOLO } ;
 extenso       = EXTENSO ;
 
 especial      = MORFEMA , ( MORFEMA | PONTO - ':' ) , MORFEMA ;
 
 comentario    = COMENTARIO ;
-
 ```
 
 ### <a name="gmorfologica"></a>Sub-gramática morfológica
